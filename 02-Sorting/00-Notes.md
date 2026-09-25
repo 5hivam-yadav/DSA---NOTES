@@ -1,8 +1,10 @@
-# 02 — Sorting Algorithms (Selection, Bubble, Insertion, Merge, Quick)
+# 02 — Sorting — Complete Pattern-Based Notes
 
 ---
 
-## 1. Introduction
+## 1. Topic Overview
+
+> **Pattern** — Sorting is not just a chapter of algorithms. It is a transformation of input that makes other patterns legal: duplicate runs, ordered boundaries, prefix regions, and monotonic predicates.
 
 Sorting is the single most reusable algorithm family in computer science. Roughly a quarter of all interview questions assume sorted input or reward you for sorting first, because **sorted order exposes structure**: binary search becomes possible, two pointers become valid, greedy choices become provably optimal, and duplicates become adjacent.
 
@@ -24,7 +26,9 @@ A card player sorting a hand is doing insertion sort (take one card, slide it in
 
 ---
 
-## 2. Prerequisites
+## 2. FUNDAMENTALS
+
+### 2.1 Prerequisites
 
 - Arrays, indexing, and `for`/`while` loops (§01).
 - Recursion: base case + recursive step, and call-stack space (§01 §3.6).
@@ -339,7 +343,7 @@ Using `==` as the comparator (must be a strict weak ordering: `comp(a,a) == fals
 
 ---
 
-## 4. Terminology
+### 2.2 Terminology
 
 | Term | Meaning |
 |---|---|
@@ -358,7 +362,7 @@ Using `==` as the comparator (must be a strict weak ordering: `comp(a,a) == fals
 
 ---
 
-## 5. ASCII Visual Explanations
+### 2.3 Visual explanations
 
 ### Divide-and-conquer skeleton (merge & quick)
 
@@ -409,7 +413,7 @@ sorted prefix      key      action
 
 ---
 
-## 6. Real-World Applications
+### 2.4 Real-world applications
 
 - **Databases**: ORDER BY clauses, B-tree maintenance, and sort-merge joins — sorting both tables first turns a quadratic join into a linear sweep.
 - **Operating systems**: kernel schedulers keep run-queues ordered; `sort(1)` on multi-GB files uses external merge sort with disk-backed runs.
@@ -421,7 +425,7 @@ sorted prefix      key      action
 
 ---
 
-## 7. Edge Cases and Pitfalls
+### 2.5 Edge cases and pitfalls
 
 1. **Empty / single-element arrays** — every recursion must return at `lo >= hi`; `n = 0` must not execute `a[0]`.
 2. **All elements equal** — Lomuto with `<=` puts every element left of pivot → `O(n^2)` recursion depth. Use `<=`/`>=` split or random pivot; Hoare handles this in `n/2 : n/2`.
@@ -434,7 +438,7 @@ sorted prefix      key      action
 
 ---
 
-## 8. Comparison Table
+### 2.6 Comparison table
 
 | Algorithm | Best | Average | Worst | Space | Stable | In-place | Notes |
 |---|---|---|---|---|---|---|---|
@@ -449,7 +453,7 @@ sorted prefix      key      action
 
 ---
 
-## 9. Best Practices
+### 2.7 Best practices
 
 - **Default to `std::sort`** — it is strictly better than anything you will hand-write outside an interview. Only hand-roll when the interviewer asks.
 - **Pass large objects by `const&`**; for `vector<pair<string,int>>` sort an index array instead of moving strings repeatedly.
@@ -461,7 +465,9 @@ sorted prefix      key      action
 
 ---
 
-## 10. Important Patterns & Problem-Solving Strategies
+### 3.8 Essential sorting patterns
+
+## 4. PATTERN LIBRARY
 
 ### Pattern 1 — Sort then two-pointer / binary search
 
@@ -512,7 +518,7 @@ partial_sort(a.begin(), a.begin() + k, a.end()); // top-k in O(n log k)
 
 ---
 
-## 11. Practice Problems
+### 3.9 Existing practice files
 
 All problems live in this folder (`02-Sorting/`). Work them in order — each adds one idea on top of the previous.
 
@@ -537,5 +543,149 @@ All problems live in this folder (`02-Sorting/`). Work them in order — each ad
 
 
 
+
+
+---
+
+## 5. PATTERN RECOGNITION
+
+| If the problem says / needs... | Think about... |
+|---|---|
+| Only the smallest or largest `k` values | `nth_element`, heap, or sorting |
+| Count of pairs whose key is ordered | merge sort and inversion counting |
+| Put a value into its correct relative position | insertion sort |
+| Search after many queries | sort once, then binary search |
+| Many ways to break a sequence into groups | comparator + sort, then sweep |
+| Two sorted lists combined in order | two pointers or `merge` |
+| O(1) partition into known value ranges | Dutch National Flag |
+| Avoid `O(n log n)` full sorting | partial selection / counting sort |
+
+## 6. BRUTE → BETTER → OPTIMAL THINKING
+
+| Problem type | Brute force | Better | Preferred under usual constraints |
+|---|---|---|---|
+| Find the minimum | Compare every pair | Sort and scan | `O(n)` running minimum |
+| Inversion count | All pairs: `O(n²)` | Compare during merge | `O(n log n)` |
+| Kth smallest | Sort all | Quickselect | Expected `O(n)` |
+| Group intervals | Test all pair overlaps | Sort and sweep | `O(n log n)` |
+| Smallest range covering two lists | Enumerate split positions | Merge and sweep | `O(n + m)` |
+| Stable ordering needed | Ordinary `sort` is not enough | Stable merge sort | Preserve relative order |
+
+**Why it is better:** sorting creates an order in which a one-dimensional scan answers a question that previously required considering every pair. Count pair contributions while merging rather than afterwards.
+
+## 7. C++ / STL TOOLKIT
+
+| Tool | Use | Complexity / caution |
+|---|---|---|
+| `sort(a.begin(), a.end())` | Default ascending sort | `O(n log n)`; not stable |
+| `stable_sort` | Equal keys keep original order | `O(n log n)`; may need `O(n)` memory |
+| `greater<int>()` | Descending order | `sort(..., greater<int>())` |
+| Lambda comparator | Custom key order | Must be a strict weak ordering |
+| `lower_bound` | First element not less than key | Sorted input only |
+| `upper_bound` | First element greater than key | Sorted input only |
+| `nth_element` | Partial sorting for kth element | Expected `O(n)`; resulting order unspecified |
+| `merge` | Merge two sorted ranges | Both inputs must be sorted |
+| `inplace_merge` | Merge adjacent sorted ranges | Uses extra memory in the usual implementation |
+| `is_sorted` | Verify sortedness | `O(n)` |
+
+```cpp
+sort(v.begin(), v.end(), [](const auto& a, const auto& b) {
+    return a.second < b.second;       // never use <=
+});
+```
+
+## 8. COMPLEXITY GUIDE
+
+| Algorithm | Best | Average | Worst | Extra space | Stable |
+|---|---:|---:|---:|---:|---|
+| Selection | `O(n²)` | `O(n²)` | `O(n²)` | `O(1)` | No |
+| Bubble | `O(n)` | `O(n²)` | `O(n²)` | `O(1)` | Yes with swap-on-`<=` |
+| Insertion | `O(n)` | `O(n²)` | `O(n²)` | `O(1)` | Yes |
+| Merge | `O(n log n)` | `O(n log n)` | `O(n log n)` | `O(n)` | Yes |
+| Quick | `O(n log n)` | `O(n log n)` | `O(n²)` | `O(log n)` average | No |
+| Heap | `O(n log n)` | `O(n log n)` | `O(n log n)` | `O(1)` or `O(n)` | No |
+| `std::sort` (introsort) | — | `O(n log n)` | `O(n log n)` | `O(log n)` | No |
+
+## 9. EDGE CASES
+
+Empty and single-element ranges; already sorted or reverse-sorted input; duplicates; negative numbers; comparator ties; very large inputs; recursion depth for quicksort; integer overflow in arithmetic comparators; already merged input.
+
+## 10. COMMON MISTAKES
+
+| Mistake | Avoid by |
+|---|---|
+| Calling `lower_bound` before sorting | Sort or use a linear method first. |
+| Comparator returning `<=` | Use a strict comparison. |
+| Assuming `sort` is stable | Use `stable_sort` when ties must preserve input order. |
+| Skipping partition boundaries in quicksort | Place the pivot once, then recurse outside it. |
+| Allocating a large temporary in every merge | Reuse a buffer. |
+
+## 11. IMPORTANT FORMULAS / RULES
+
+```text
+A partition of n elements: pivot rank k gives at most k and n-k-1 elements on either side.
+Inversions: pairs (i, j), i < j, with a[i] > a[j].
+Merge: while comparing sorted ranges, the next output is always the smaller unconsumed element.
+Stable sort: equal keys retain their original relative order.
+```
+
+## 12. REUSABLE TEMPLATES
+
+```cpp
+void mergeSorted(vector<int>& a, int l, int mid, int r, vector<int>& buf) {
+    int i = l, j = mid + 1, k = l;
+    while (i <= mid && j <= r) buf[k++] = (a[i] <= a[j]) ? a[i++] : a[j++];
+    while (i <= mid) buf[k++] = a[i++];
+    while (j <= r) buf[k++] = a[j++];
+    for (int p = l; p <= r; ++p) a[p] = buf[p];
+}
+
+int partitionLomuto(vector<int>& a, int l, int r) {
+    int pivot = a[r], i = l;
+    for (int j = l; j < r; ++j)
+        if (a[j] < pivot) swap(a[i++], a[j]);
+    swap(a[i], a[r]);
+    return i;
+}
+```
+
+## 13. ADVANCED CONCEPTS
+
+**Hybrid/introsort** combines quicksort’s average speed, heapsort’s worst-case guarantee, and insertion sort for small partitions. **Counting sort** is `O(n + k)` for integer keys in a range of size `k`; it is not comparison sorting. **Radix sort** processes digits with a stable counting pass, giving `O(d(n + k))` for bounded integer keys. Comparison sorting has an `Ω(n log n)` worst-case lower bound.
+
+## 14. CONNECTIONS BETWEEN PATTERNS
+
+```text
+Sorting
+   +--> Binary search on the sorted order
+   +--> Two pointers for pair/range questions
+   +--> Merge sort for inversion counts
+   +--> Priority queue for streaming k best / Dijkstra
+   +--> Counting/radix sort for bounded integer keys
+```
+
+## 15. PROBLEM → PATTERN MAPPING
+
+### Sorting implementations
+- `01-Selection-Sort.cpp`, `02-Bubble-Sort.cpp`, `03-Insertion-Sort.cpp`
+- `04-Merge-Sort.cpp`, `05-Recursive-Bubble-Sort.cpp`, `06-Recursive-Insertion-Sort.cpp`, `07-Quick-Sort.cpp`
+
+## 16. QUICK REVISION SHEET
+
+- `O(n²)` basics: selection, bubble, insertion; merge/quick/introsort are `O(n log n)`.
+- Use `stable_sort` for stability; `std::sort` is not stable.
+- Count inversions while merging.
+- Sort + two pointers for pair sums; sort + sweep for intervals.
+- `lower_bound`/`upper_bound` require sorted input; `nth_element` is expected `O(n)`.
+- Compare on the desired key and keep the comparator strict.
+
+## 17. INTERVIEW CHECKLIST
+
+- [ ] I can implement merge sort and explain its `O(n log n)` time.
+- [ ] I can implement quicksort and guard the worst-case pivot.
+- [ ] I know when a stable sort is required.
+- [ ] I can derive a comparator and avoid `<=`.
+- [ ] I can count inversions during a merge.
+- [ ] I can select sorting, binary search, two pointers, or a heap from the constraints.
 
 

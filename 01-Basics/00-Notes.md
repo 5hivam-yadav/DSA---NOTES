@@ -1,8 +1,10 @@
-# 01 — Basics (C++, Patterns, Basic Maths, Basic Recursion & Basic Hashing)
+# 01 — C++ & Mathematical Foundations — Complete Pattern-Based Notes
 
 ---
 
-## 1. Introduction
+## 1. Topic Overview
+
+> **Remember** — This chapter is the foundation. It is deliberately both a C++ reference and a reusable algorithmic-thinking toolkit.
 
 The foundation of Data Structures and Algorithms rests upon five foundational competencies:
 
@@ -30,7 +32,9 @@ Think of basic programming syntax and math as the physics engine of software eng
 
 ---
 
-## 2. Prerequisites
+## 2. FUNDAMENTALS
+
+### 2.1 Prerequisites
 
 Before studying these foundational concepts, ensure familiarity with:
 
@@ -307,7 +311,7 @@ Assuming `unordered_map` is always `O(1)`: adversarial inputs force every key in
 
 ---
 
-## 4. Terminology
+### 2.2 Terminology
 
 | Term | Meaning |
 |---|---|
@@ -326,7 +330,7 @@ Assuming `unordered_map` is always `O(1)`: adversarial inputs force every key in
 
 ---
 
-## 5. ASCII Visual Explanations
+### 2.3 Visual explanations
 
 ### Call stack lifecycle in recursion
 
@@ -379,7 +383,7 @@ reverse order collected: 9, 5, 4  =>  reversed number = 459
 
 ---
 
-## 6. Real-World Applications
+### 2.4 Real-world applications
 
 - **Fast I/O**: competitive judges and log-processing pipelines disable stream sync (`ios::sync_with_stdio(false); cin.tie(nullptr);`) for 2–5× throughput on large inputs.
 - **GCD/LCM**: RSA key generation verifies coprime exponents; audio/video frame alignment uses LCM of sample rates.
@@ -390,7 +394,129 @@ reverse order collected: 9, 5, 4  =>  reversed number = 459
 
 ---
 
-## 7. Edge Cases and Pitfalls
+### 3.8 Terminology and toolkit reference
+
+## 4. PATTERN LIBRARY
+
+These are the foundational patterns that later topics (Arrays, Strings, Sorting, DP) reuse in more elaborate form.
+
+### P1 — Two-pointer reversal
+
+**What is the pattern?** Two indices move toward each other and perform work while `left < right`.
+
+**Recognition clues**
+- "Reverse in place" · "Check if this is a palindrome" · "Find the symmetric element" · "Partition around a center"
+
+**Core intuition** — Each step pairs the two most distant unprocessed elements. After the swap, both positions are final, so both pointers advance.
+
+**General approach** — set `left = 0`, `right = n - 1`; while `left < right`, compare or swap; move both inward. A single middle element needs no handling.
+
+**C++ template**
+```cpp
+bool isPalindrome(const vector<int>& a) {
+    int l = 0, r = (int)a.size() - 1;
+    while (l < r) {
+        if (a[l] != a[r]) return false;
+        ++l; --r;
+    }
+    return true;
+}
+```
+
+**Time** `O(n)` — each element is visited at most once. **Space** `O(1)`.
+
+**Edge cases** — empty input (returns `true` immediately), one element (`l == r`, the loop never runs).
+
+**Common mistakes** — using `<=` instead of `<`; forgetting to move both pointers.
+
+**Variations** — skip non-alphanumeric characters first; on a linked list, the same idea uses pointers instead of indices.
+
+**Practice mapping**
+- `21-Reverse-an-Array.cpp`
+- `22-Check-Palindrome-String.cpp`
+
+---
+
+### P2 — Modulo accumulation
+
+**What is the pattern?** Reduce after every operation so the value never exceeds the datatype's range.
+
+**Recognition clues** — "modulo `10^9 + 7`", "the answer may overflow", "count of ways".
+
+**Core intuition** — Modulo distributes over addition and multiplication, so reducing early never changes the final result.
+
+**C++ template**
+```cpp
+constexpr long long MOD = 1'000'000'007;
+long long accumulateModulo(const vector<long long>& nums) {
+    long long ans = 0;
+    for (long long x : nums) ans = (ans + x) % MOD;
+    return ans;
+}
+```
+
+**Time** `O(n)`. **Space** `O(1)`.
+
+**Edge cases** — negative inputs: C++ `%` keeps the dividend's sign, so `(-7) % 3 == -1`; normalize with `((x % M) + M) % M`.
+
+**Common mistakes** — `int` accumulator; applying `%` only at the end; mixing different `M` values.
+
+**Practice mapping**
+- `10-Reverse-Integer.cpp` (overflow guard by comparison)
+
+---
+
+### P3 — Digit unrolling
+
+**What is the pattern?** Extract the last digit with `% 10`, drop it with `/ 10`, repeat until the number is `0`.
+
+**Recognition clues** — "digit sum", "reverse a number", "Armstrong number", "base conversion".
+
+**Core intuition** — In base 10, `n = d_k·10^k + … + d_0`. Modulo isolates `d_0`; integer division removes it. The loop is a repeated decomposition.
+
+**C++ template**
+```cpp
+int digitSum(long long n) {
+    int sum = 0;
+    if (n < 0) n = -n;                 // handle the sign FIRST
+    while (n > 0) { sum += n % 10; n /= 10; }
+    return sum;
+}
+```
+
+**Time** `O(log₁₀ n)` — one iteration per digit. **Space** `O(1)`.
+
+**Edge cases** — `n = 0` (the loop never runs; the answer must be `0`); `n = INT_MIN` (negating overflows an `int` — use `long long`).
+
+**Common mistakes** — `while (n > 0)` on a possibly negative input (silently skips the body); using `pow(d, k)` for Armstrong numbers (floating-point error — build powers with an integer loop).
+
+**Variations** — arbitrary base `b` via `% b` and `/ b`; digit DP; trailing zeros of `n!` = `n/5 + n/25 + …`.
+
+**Practice mapping**
+- `09-Count-Digits.cpp`
+- `10-Reverse-Integer.cpp`
+- `11-Palindrome-Number.cpp`
+- `13-Armstrong-Number.cpp`
+
+---
+
+<!--P8-->
+### 3.9 Comparison table
+
+| Approach | Time | Space | Best for | Limitation |
+|---|---|---|---|---|
+| Direct frequency array | `O(N)` build, `O(1)` query | `O(range)` | Dense keys ≤ 10^6, characters | Impossible for range 10^9 |
+| `std::unordered_map` | `O(1)` avg query | `O(N)` | Sparse/arbitrary keys | `O(N)` worst case on collisions |
+| `std::map` | `O(log N)` query | `O(N)` | Ordered iteration, range queries | Higher constant factor |
+| Iterative loop | `O(f(N))` explicit | `O(1)`–`O(N)` | Flat problems, hot paths | Awkward for nested structures |
+| Recursive function | Same as iteration | `O(depth)` stack | Trees, backtracking, divide & conquer | Stack overflow at depth ~10^5 |
+| Trial division prime test | `O(sqrt(n))` per query | `O(1)` | Single checks, n ≤ 10^14 | Slow across many queries |
+| Sieve of Eratosthenes | `O(n log log n)` build | `O(n)` | All primes ≤ 10^7 quickly | Memory caps n ≤ ~10^8 |
+
+---
+
+<!--P9-->
+### 3.10 Edge cases and pitfalls
 
 1. **Negative modulo** — C++ gives `(-7) % 3 == -1`. Normalize to `[0, M-1]`:
 
@@ -421,21 +547,8 @@ reverse order collected: 9, 5, 4  =>  reversed number = 459
 
 ---
 
-## 8. Comparison Table
-
-| Approach | Time | Space | Best for | Limitation |
-|---|---|---|---|---|
-| Direct frequency array | `O(N)` build, `O(1)` query | `O(range)` | Dense keys ≤ 10^6, characters | Impossible for range 10^9 |
-| `std::unordered_map` | `O(1)` avg query | `O(N)` | Sparse/arbitrary keys | `O(N)` worst case on collisions |
-| `std::map` | `O(log N)` query | `O(N)` | Ordered iteration, range queries | Higher constant factor |
-| Iterative loop | `O(f(N))` explicit | `O(1)`–`O(N)` | Flat problems, hot paths | Awkward for nested structures |
-| Recursive function | Same as iteration | `O(depth)` stack | Trees, backtracking, divide & conquer | Stack overflow at depth ~10^5 |
-| Trial division prime test | `O(sqrt(n))` per query | `O(1)` | Single checks, n ≤ 10^14 | Slow across many queries |
-| Sieve of Eratosthenes | `O(n log log n)` build | `O(n)` | All primes ≤ 10^7 quickly | Memory caps n ≤ ~10^8 |
-
----
-
-## 9. Best Practices
+<!--P10-->
+### 3.11 Best practices
 
 - **Enable fast I/O once at the top of `main()`**:
 
@@ -454,65 +567,8 @@ reverse order collected: 9, 5, 4  =>  reversed number = 459
 
 ---
 
-## 10. Important Patterns & Problem-Solving Strategies
-
-### Pattern 1 — Two-pointer reversal
-
-```cpp
-void reverseInPlace(vector<int> &a) {
-    int l = 0, r = (int)a.size() - 1;
-    while (l < r) swap(a[l++], a[r--]);
-}
-```
-
-*Use when*: palindromes, in-place array reversal, partitioning around a center.
-
-### Pattern 2 — Modulo accumulation
-
-```cpp
-const int MOD = 1e9 + 7;
-long long ans = 0;
-for (int x : nums) ans = (ans + x) % MOD;
-```
-
-*Use when*: large sums/products, combinatorics counts, rolling hashes.
-
-### Pattern 3 — Digit unrolling
-
-```cpp
-while (n > 0) {
-    int d = n % 10;
-    // process d
-    n /= 10;
-}
-```
-
-*Use when*: digit sums, Armstrong/palindrome numbers, base conversion, reversal.
-
-### Pattern 4 — Precompute once, answer many
-
-```cpp
-vector<int> pre = buildPrefix(nums);   // O(n)
-for (auto [l, r] : queries)
-    ans = pre[r] - pre[l - 1];          // O(1)
-```
-
-*Use when*: repeated range queries over static data (sieves, prefix sums).
-
-### Pattern 5 — Guard the invariant with a base case
-
-```cpp
-int f(int n) {
-    if (n <= 1) return n;   // base case FIRST
-    return f(n - 1) + f(n - 2);
-}
-```
-
-*Use when*: every recursive solution — check the base case before any work.
-
----
-
-## 11. Practice Problems
+<!--P15-->
+### 3.12 Existing practice files
 
 All problems live in this folder (`01-Basics/`). Suggested order follows the section order above.
 
@@ -552,12 +608,149 @@ All problems live in this folder (`01-Basics/`). Suggested order follows the sec
 1. Read the concept sections, then attempt the matching file without looking.
 2. Trace every recursion on paper (frames, arguments, return values) before running.
 3. Re-derive the loop bounds of each pattern from the ASCII diagrams in §5.
+---
 
+## 4. PATTERN LIBRARY
 
+### P1 — Loop boundaries and index arithmetic
 
+#### What is the pattern?
+Translate a one-based, mathematical description into correct zero-based C++ loop bounds without off-by-one errors.
 
+#### When should I recognize it?
+Statements mention positions, ranges, row/column indices, digit positions, or a value printed several times.
 
+#### Core intuition
+A half-open interval `[l, r)` is represented by `for (int i = l; i < r; ++i)`. Choosing it consistently removes many boundary mistakes.
 
+#### General approach
+Draw the indices; write the first and last valid values; state whether the end is inclusive; use `<=` or `<` accordingly.
 
+#### Generic algorithm
+`for (int i = first; i <= last; ++i)` for inclusive ranges, or `i < endExclusive` for half-open ranges.
 
+#### C++ template
+```cpp
+// print positions 1 through n
+for (int i = 1; i <= n; ++i) cout << i << ' ';
+
+// half-open range [l, r)
+for (int i = l; i < r; ++i) { /* a[i] is valid */ }
+```
+
+#### Complexity
+`O(last - first + 1)` time and `O(1)` extra space.
+
+#### Edge cases and mistakes
+`n = 0`; inclusive versus exclusive endpoints; `r - l` versus `r - l + 1`; signed/unsigned subtraction.
+
+#### Variations and practice mapping
+Two-dimensional traversal and reverse loops: `01-User-Input-Output.cpp`, `05-For-Loops.cpp`, `06-While-Loops.cpp`, `26-Pattern-Square-Star.cpp`, `27-Pattern-Triangles-Pyramid.cpp`, `28-Pattern-Numbers-Alphabets-Diamond.cpp`.
+
+### P2 — Safe integer and digit processing
+
+#### What is the pattern?
+Extract decimal digits, reverse a number, or calculate digit properties while keeping intermediate values in a safe type.
+
+#### When should I recognize it?
+The problem says digit sum, digit product, Armstrong number, palindrome number, or reverse integer.
+
+#### Core intuition
+`n % 10` removes the last digit; integer `n / 10` removes it permanently. Process until the value becomes zero.
+
+#### General approach
+Use `long long`; repeatedly take `n % 10`, process it, then set `n /= 10`. Preserve the original number when checking a property.
+
+#### Generic algorithm
+`while(n > 0) { d=n%10; use(d); n/=10; }`
+
+#### C++ template
+```cpp
+int digitSum(long long n) {
+    int sum = 0;
+    for (; n > 0; n /= 10) sum += int(n % 10);
+    return sum;
+}
+```
+
+#### Complexity
+`O(log n)` time and `O(1)` space.
+
+#### Edge cases and mistakes
+`0` (a valid single-digit number); negative values; `INT_MIN` negation; changing `n` before checking a digit property.
+
+#### Variations and practice mapping
+Digit powers, palindromes, and reversal: `09-Count-Digits.cpp`, `10-Reverse-Integer.cpp`, `11-Palindrome-Number.cpp`, `13-Armstrong-Number.cpp`.
+
+### P3 — GCD, factors, and primes
+
+#### What is the pattern?
+Use Euclidean division, divisor pairing, and elimination of multiples instead of checking every candidate unnecessarily.
+
+#### When should I recognize it?
+The statement asks for GCD/LCM, divisors, or whether a number is prime.
+
+#### Core intuition
+`gcd(a,b) = gcd(b, a%b)`. If `d` divides `n`, then `n/d` does too, so only test up to `sqrt(n)`. The sieve marks all multiples of each prime.
+
+#### C++ template
+```cpp
+long long gcd(long long a, long long b) {
+    while (b) { long long r = a % b; a = b; b = r; }
+    return a;
+}
+```
+
+#### Complexity, edge cases, and mistakes
+GCD is `O(log min(a,b))`; factors and trial-division primality are `O(sqrt n)`. Reject `n < 2`; widen multiplication in `d*d <= n`.
+
+#### Variations and practice mapping
+`12-GCD-HCF.cpp`, `14-Print-All-Divisors.cpp`, `15-Check-Prime.cpp`.
+
+### P4 — Direct addressing and frequency tables
+
+#### What is the pattern?
+Index a table by a small bounded value for deterministic constant-time counting.
+
+#### When should I recognize it?
+Keys are non-negative and bounded, with questions about occurrence, duplicates, or frequency.
+
+#### C++ template
+```cpp
+vector<int> countFrequency(const vector<int>& a, int k) {
+    vector<int> frequency(k + 1, 0);
+    for (int x : a) if (0 <= x && x <= k) ++frequency[x];
+    return frequency;
+}
+```
+
+#### Complexity, edge cases, and mistakes
+`O(n+k)` time and `O(k)` space. Use a map for negative or huge keys; avoid unchecked large allocations.
+
+#### Variations and practice mapping
+`24-Counting-Frequencies.cpp`, `25-Highest-Lowest-Frequency.cpp`.
+
+### P5 — Base-case-first recursion
+
+#### What is the pattern?
+Call a strictly smaller version of the task until an explicit stopping condition is reached.
+
+#### When should I recognize it?
+The task is self-similar: printing a range, factorial, Fibonacci, digit processing, or accumulating a sum.
+
+#### C++ template
+```cpp
+long long factorial(int n) {
+    if (n <= 1) return 1;          // stop first
+    return n * factorial(n - 1);   // smaller task
+}
+```
+
+#### Complexity, edge cases, and mistakes
+A linear chain is `O(n)` time and `O(n)` stack space. Validate negative input, put the base case first, and show the call stack in an explanation.
+
+#### Variations and practice mapping
+`16-Print-Name-N-Times.cpp`, `17-Print-1-to-N.cpp`, `18-Print-N-to-1.cpp`, `19-Sum-of-First-N-Numbers.cpp`, `20-Factorial-of-N.cpp`, `23-Fibonacci-Number.cpp`.
+
+<!--NEXT-->
 
