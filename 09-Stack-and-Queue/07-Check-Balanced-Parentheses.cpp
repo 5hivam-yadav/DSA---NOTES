@@ -4,38 +4,41 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Stack
-Statement: Given a string of brackets, return true if every opener closes in the correct order (stack).
-Sample Input: s = "()[]{}"
-Sample Output: true
+Statement: Given a string of brackets, return true if every opener closes in the
+correct order (stack). Sample Input: s = "()[]{}" Sample Output: true
 Explanation: Each pair nests and closes properly.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     bool isValid(string s) {
         stack<char> st;
         for (char c : s) {
-            if (c == '(' || c == '[' || c == '{') st.push(c);
+            if (c == '(' || c == '[' || c == '{')
+                st.push(c);
             else {
-                if (st.empty()) return false;
+                if (st.empty())
+                    return false;
                 char t = st.top();
                 st.pop();
-                if ((c == ')' && t != '(') || (c == ']' && t != '[') || (c == '}' && t != '{')) return false;
+                if ((c == ')' && t != '(') || (c == ']' && t != '[') ||
+                    (c == '}' && t != '{'))
+                    return false;
             }
         }
         return st.empty();

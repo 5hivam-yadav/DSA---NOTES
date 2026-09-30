@@ -4,30 +4,29 @@ Platform: LeetCode
 Problem Number: -
 Difficulty: Medium
 Pattern: DP - Stocks
-Statement: Given prices by day, return max profit from one buy then later sell; 0 if no profit possible.
-Sample Input: prices = [7, 1, 5, 3, 6, 4]
-Sample Output: 5
-Explanation: Buy at 1, sell at 6 for profit 5.
+Statement: Given prices by day, return max profit from one buy then later sell;
+0 if no profit possible. Sample Input: prices = [7, 1, 5, 3, 6, 4] Sample
+Output: 5 Explanation: Buy at 1, sell at 6 for profit 5.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    int maxProfit(vector<int>& p) {
+  public:
+    int maxProfit(vector<int> &p) {
         int mn = INT_MAX, b = 0;
         for (int x : p) {
             mn = min(mn, x);

@@ -9,25 +9,26 @@ Sample Input: n = 3
 Sample Output: 3x3 block of '*'
 Explanation: Each of 3 rows holds 3 stars.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 void printSquare(int n) {
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) cout << "* ";
+        for (int j = 0; j < n; j++)
+            cout << "* ";
         cout << "\n";
     }
 }

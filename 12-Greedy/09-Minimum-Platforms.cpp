@@ -4,28 +4,28 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Greedy
-Statement: Given arrival/departure times, return the minimum platforms so no train waits (two-pointer on sorted times).
-Sample Input: arr = [900,940,950], dep = [910,1200,1120]
-Sample Output: 2
-Explanation: Two trains overlap, needing 2 platforms.
+Statement: Given arrival/departure times, return the minimum platforms so no
+train waits (two-pointer on sorted times). Sample Input: arr = [900,940,950],
+dep = [910,1200,1120] Sample Output: 2 Explanation: Two trains overlap, needing
+2 platforms.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-int platforms(vector<int>& a, vector<int>& d) {
+int platforms(vector<int> &a, vector<int> &d) {
     sort(a.begin(), a.end());
     sort(d.begin(), d.end());
     int i = 0, j = 0, c = 0, b = 0, n = a.size();
@@ -34,8 +34,7 @@ int platforms(vector<int>& a, vector<int>& d) {
             c++;
             b = max(b, c);
             i++;
-        }
-        else {
+        } else {
             c--;
             j++;
         }

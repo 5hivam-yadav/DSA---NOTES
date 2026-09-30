@@ -4,32 +4,33 @@ Platform: GFG / Striver A2Z
 Problem Number: -
 Difficulty: Easy
 Pattern: Sorting
-Statement: Sort the array using recursive bubble sort: one bubble pass, then recurse on the first n-1 elements.
-Sample Input: arr = [5, 1, 4, 2, 8]
-Sample Output: [1,2,4,5,8]
-Explanation: Each call bubbles the largest to the end.
+Statement: Sort the array using recursive bubble sort: one bubble pass, then
+recurse on the first n-1 elements. Sample Input: arr = [5, 1, 4, 2, 8] Sample
+Output: [1,2,4,5,8] Explanation: Each call bubbles the largest to the end.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 // Striver A2Z: Recursive Bubble Sort
-void bubble_sort(vector<int>& arr, int n) {
-    if (n == 1) return;
+void bubble_sort(vector<int> &arr, int n) {
+    if (n == 1)
+        return;
     for (int j = 0; j <= n - 2; j++) {
-        if (arr[j] > arr[j + 1]) swap(arr[j], arr[j + 1]);
+        if (arr[j] > arr[j + 1])
+            swap(arr[j], arr[j + 1]);
     }
     bubble_sort(arr, n - 1);
 }
@@ -40,7 +41,8 @@ int main() {
 
     bubble_sort(arr, n);
 
-    for (int i = 0; i < n; i++) cout << arr[i] << " ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
     cout << endl;
     return 0;
 }

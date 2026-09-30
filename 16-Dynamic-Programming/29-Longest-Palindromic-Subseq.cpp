@@ -4,36 +4,37 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: DP - Strings
-Statement: Given s, return the length of its longest palindromic subsequence (LCS of s and reverse(s)).
-Sample Input: s = "bbbab"
-Sample Output: 4
+Statement: Given s, return the length of its longest palindromic subsequence
+(LCS of s and reverse(s)). Sample Input: s = "bbbab" Sample Output: 4
 Explanation: "bbbb" is the longest palindromic subsequence.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     int longestPalindromeSubseq(string s) {
         string r = s;
         reverse(r.begin(), r.end());
         int n = s.size();
         vector<int> pr(n + 1, 0), cu(n + 1, 0);
         for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= n; j++) cu[j] = (s[i-1] == r[j-1]) ? pr[j-1] + 1 : max(pr[j], cu[j-1]);
+            for (int j = 1; j <= n; j++)
+                cu[j] = (s[i - 1] == r[j - 1]) ? pr[j - 1] + 1
+                                               : max(pr[j], cu[j - 1]);
             swap(pr, cu);
         }
         return pr[n];

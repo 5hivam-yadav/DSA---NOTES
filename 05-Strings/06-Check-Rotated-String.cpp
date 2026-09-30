@@ -4,29 +4,28 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: Strings
-Statement: Given strings s and goal, return true if goal is a rotation of s (check goal inside s+s with equal lengths).
-Sample Input: s = "abcde", goal = "cdeab"
-Sample Output: true
-Explanation: "cdeab" appears inside "abcdeabcde".
+Statement: Given strings s and goal, return true if goal is a rotation of s
+(check goal inside s+s with equal lengths). Sample Input: s = "abcde", goal =
+"cdeab" Sample Output: true Explanation: "cdeab" appears inside "abcdeabcde".
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     bool rotateString(string s, string g) {
         return s.size() == g.size() && (s + s).find(g) != string::npos;
     }

@@ -4,36 +4,37 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: DP - Knapsack
-Statement: Given an array, split it into two subsets minimizing the absolute sum difference (subset-sum near total/2).
-Sample Input: a = [1,6,11,5]
-Sample Output: 1
-Explanation: Subsets [1,5,6]=12 and [11]=11 differ by 1.
+Statement: Given an array, split it into two subsets minimizing the absolute sum
+difference (subset-sum near total/2). Sample Input: a = [1,6,11,5] Sample
+Output: 1 Explanation: Subsets [1,5,6]=12 and [11]=11 differ by 1.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-int minDifference(vector<int>& a) {
+int minDifference(vector<int> &a) {
     int sum = accumulate(a.begin(), a.end(), 0);
     vector<char> dp(sum + 1, 0);
     dp[0] = 1;
     for (int x : a)
-    for (int s = sum; s >= x; s--) dp[s] = dp[s] || dp[s - x];
+        for (int s = sum; s >= x; s--)
+            dp[s] = dp[s] || dp[s - x];
     int ans = sum;
     for (int s = 0; s <= sum; s++)
-    if (dp[s]) ans = min(ans, abs(sum - 2 * s));
+        if (dp[s])
+            ans = min(ans, abs(sum - 2 * s));
     return ans;
 }
 

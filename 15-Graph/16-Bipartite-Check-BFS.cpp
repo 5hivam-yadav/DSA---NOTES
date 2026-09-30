@@ -4,34 +4,35 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: Graph (BFS/DFS)
-Statement: Given an undirected graph, return true if it is bipartite (2-colourable) using BFS colouring.
-Sample Input: graph = [[1,3],[0,2],[1,3],[0,2]]
-Sample Output: true
-Explanation: Even cycle colours alternate cleanly.
+Statement: Given an undirected graph, return true if it is bipartite
+(2-colourable) using BFS colouring. Sample Input: graph =
+[[1,3],[0,2],[1,3],[0,2]] Sample Output: true Explanation: Even cycle colours
+alternate cleanly.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    bool isBipartite(vector<vector<int>>& g) {
+  public:
+    bool isBipartite(vector<vector<int>> &g) {
         int n = g.size();
         vector<int> c(n, -1);
         for (int s = 0; s < n; s++) {
-            if (c[s] != -1) continue;
+            if (c[s] != -1)
+                continue;
             queue<int> q;
             q.push(s);
             c[s] = 0;
@@ -42,8 +43,8 @@ public:
                     if (c[v] == -1) {
                         c[v] = c[u] ^ 1;
                         q.push(v);
-                    }
-                    else if (c[v] == c[u]) return false;
+                    } else if (c[v] == c[u])
+                        return false;
                 }
             }
         }

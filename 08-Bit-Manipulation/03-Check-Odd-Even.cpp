@@ -9,25 +9,23 @@ Sample Input: n = 7
 Sample Output: Odd
 Explanation: 7 % 2 = 1.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-bool isOdd(int n) {
-    return n & 1;
-}
+bool isOdd(int n) { return n & 1; }
 
 int main() {
     int n = 7;

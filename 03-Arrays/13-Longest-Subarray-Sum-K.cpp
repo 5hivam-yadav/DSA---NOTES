@@ -4,36 +4,38 @@ Platform: LeetCode
 Problem Number: -
 Difficulty: Medium
 Pattern: Sliding Window
-Statement: Given an array and k, return the length of the longest subarray summing to k (prefix sums + hashmap).
-Sample Input: a = [1, 2, 1, 2, 3], k = 5
+Statement: Given an array and k, return the length of the longest subarray
+summing to k (prefix sums + hashmap). Sample Input: a = [1, 2, 1, 2, 3], k = 5
 Sample Output: 3
 Explanation: Subarray [2, 1, 2] sums to 5 with length 3.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-int longestK(vector<int>& a, int k) {
+int longestK(vector<int> &a, int k) {
     unordered_map<long long, int> f;
     long long s = 0;
     int b = 0;
     f[0] = -1;
     for (int i = 0; i < (int)a.size(); i++) {
         s += a[i];
-        if (f.count(s - k)) b = max(b, i - f[s - k]);
-        if (!f.count(s)) f[s] = i;
+        if (f.count(s - k))
+            b = max(b, i - f[s - k]);
+        if (!f.count(s))
+            f[s] = i;
     }
     return b;
 }

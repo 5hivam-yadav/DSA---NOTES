@@ -4,38 +4,39 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: Binary Tree
-Statement: Given a binary tree root, target and k, return all nodes k edges away (parent links + BFS from target).
-Sample Input: root = [3,5,1,6,2,0,8], target = 5, k = 2
-Sample Output: [7,4,1]
-Explanation: Nodes 7, 4 (children path) and 1 (via root) qualify.
+Statement: Given a binary tree root, target and k, return all nodes k edges away
+(parent links + BFS from target). Sample Input: root = [3,5,1,6,2,0,8], target =
+5, k = 2 Sample Output: [7,4,1] Explanation: Nodes 7, 4 (children path) and 1
+(via root) qualify.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 struct TreeNode {
     int val;
-    TreeNode* left;
-    TreeNode* right;
-    TreeNode(int x): val(x), left(nullptr), right(nullptr) {}
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
 
 class Solution {
-public:
-    void parent(TreeNode* r, unordered_map<TreeNode*, TreeNode*>& p) {
-        if (!r) return;
+  public:
+    void parent(TreeNode *r, unordered_map<TreeNode *, TreeNode *> &p) {
+        if (!r)
+            return;
         if (r->left) {
             p[r->left] = r;
             parent(r->left, p);
@@ -45,11 +46,11 @@ public:
             parent(r->right, p);
         }
     }
-    vector<int> distanceK(TreeNode* r, TreeNode* t, int k) {
-        unordered_map<TreeNode*, TreeNode*> p;
+    vector<int> distanceK(TreeNode *r, TreeNode *t, int k) {
+        unordered_map<TreeNode *, TreeNode *> p;
         parent(r, p);
-        unordered_set<TreeNode*> v;
-        queue<TreeNode*> q;
+        unordered_set<TreeNode *> v;
+        queue<TreeNode *> q;
         q.push(t);
         v.insert(t);
         while (!q.empty() && k--) {

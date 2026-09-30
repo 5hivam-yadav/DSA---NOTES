@@ -4,36 +4,39 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Hashing
-Statement: Given an array, return the elements with the highest and lowest frequency (ties broken by smaller value).
-Sample Input: a = [1, 2, 1, 3, 2, 1]
+Statement: Given an array, return the elements with the highest and lowest
+frequency (ties broken by smaller value). Sample Input: a = [1, 2, 1, 3, 2, 1]
 Sample Output: (1, 3)
 Explanation: 1 appears most (3x); 3 appears least (1x).
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-pair<int, int> hiLo(vector<int>& a) {
+pair<int, int> hiLo(vector<int> &a) {
     unordered_map<int, int> f;
-    for (int x : a) f[x]++;
+    for (int x : a)
+        f[x]++;
     int hi = a[0], lo = a[0];
-    for (auto& p : f) {
-        if (p.second > f[hi]) hi = p.first;
-        if (p.second < f[lo]) lo = p.first;
+    for (auto &p : f) {
+        if (p.second > f[hi])
+            hi = p.first;
+        if (p.second < f[lo])
+            lo = p.first;
     }
-    return { hi, lo};
+    return {hi, lo};
 }
 
 int main() {

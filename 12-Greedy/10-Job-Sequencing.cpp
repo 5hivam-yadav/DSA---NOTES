@@ -4,28 +4,28 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: Greedy
-Statement: Given jobs with deadlines and profits, schedule at most one per slot for maximum profit (sort by profit, DSU/slots).
-Sample Input: jobs = [(1,4,20),(2,1,10),(3,1,40),(4,1,30)]
-Sample Output: (2 jobs, profit 60)
+Statement: Given jobs with deadlines and profits, schedule at most one per slot
+for maximum profit (sort by profit, DSU/slots). Sample Input: jobs =
+[(1,4,20),(2,1,10),(3,1,40),(4,1,30)] Sample Output: (2 jobs, profit 60)
 Explanation: Jobs 1 and 3 fit for 20 + 40 = 60.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-pair<int, int> jobs(vector<int>& id, vector<int>& dl, vector<int>& pf) {
+pair<int, int> jobs(vector<int> &id, vector<int> &dl, vector<int> &pf) {
     int n = id.size(), mx = *max_element(dl.begin(), dl.end());
     vector<int> slot(mx + 1, -1);
     vector<int> o(n);
@@ -33,14 +33,15 @@ pair<int, int> jobs(vector<int>& id, vector<int>& dl, vector<int>& pf) {
     sort(o.begin(), o.end(), [&](int a, int b) { return pf[a] > pf[b]; });
     int c = 0, p = 0;
     for (int i : o) {
-        for (int d = dl[i]; d > 0; d--) if (slot[d] == -1) {
-            slot[d] = i;
-            c++;
-            p += pf[i];
-            break;
-        }
+        for (int d = dl[i]; d > 0; d--)
+            if (slot[d] == -1) {
+                slot[d] = i;
+                c++;
+                p += pf[i];
+                break;
+            }
     }
-    return { c, p};
+    return {c, p};
 }
 
 /*

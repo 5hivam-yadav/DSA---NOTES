@@ -4,33 +4,34 @@ Platform: GFG / Striver A2Z
 Problem Number: -
 Difficulty: Easy
 Pattern: Sorting
-Statement: Sort the array in non-decreasing order in place using selection sort: repeatedly move the suffix minimum forward.
-Sample Input: arr = [64, 25, 12, 22, 11]
-Sample Output: [11,12,22,25,64]
-Explanation: Each pass fixes the next smallest element.
+Statement: Sort the array in non-decreasing order in place using selection sort:
+repeatedly move the suffix minimum forward. Sample Input: arr = [64, 25, 12, 22,
+11] Sample Output: [11,12,22,25,64] Explanation: Each pass fixes the next
+smallest element.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 // Striver A2Z: Selection Sort
-void selection_sort(vector<int>& arr, int n) {
+void selection_sort(vector<int> &arr, int n) {
     for (int i = 0; i <= n - 2; i++) {
         int mini = i;
         for (int j = i + 1; j <= n - 1; j++) {
-            if (arr[j] < arr[mini]) mini = j;
+            if (arr[j] < arr[mini])
+                mini = j;
         }
         swap(arr[mini], arr[i]);
     }
@@ -42,7 +43,8 @@ int main() {
 
     selection_sort(arr, n);
 
-    for (int i = 0; i < n; i++) cout << arr[i] << " ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
     cout << endl;
     return 0;
 }

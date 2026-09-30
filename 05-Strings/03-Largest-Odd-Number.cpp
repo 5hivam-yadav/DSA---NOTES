@@ -4,31 +4,32 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Strings
-Statement: Given a numeric string, return the longest prefix forming an odd number.
-Sample Input: num = "52"
-Sample Output: "5"
-Explanation: Dropping trailing 2 leaves odd 5.
+Statement: Given a numeric string, return the longest prefix forming an odd
+number. Sample Input: num = "52" Sample Output: "5" Explanation: Dropping
+trailing 2 leaves odd 5.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     string largestOddNumber(string s) {
-        for (int i = (int)s.size() - 1; i >= 0; i--) if ((s[i] - '0') % 2 == 1) return s.substr(0, i + 1);
+        for (int i = (int)s.size() - 1; i >= 0; i--)
+            if ((s[i] - '0') % 2 == 1)
+                return s.substr(0, i + 1);
         return "";
     }
 };

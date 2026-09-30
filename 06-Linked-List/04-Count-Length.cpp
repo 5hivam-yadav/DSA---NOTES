@@ -9,28 +9,28 @@ Sample Input: head = [4, 2, 7]
 Sample Output: 3
 Explanation: Three nodes are visited.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 struct ListNode {
     int val;
-    ListNode* next;
-    ListNode(int x): val(x), next(nullptr) {}
+    ListNode *next;
+    ListNode(int x) : val(x), next(nullptr) {}
 };
-int len(ListNode* h) {
+int len(ListNode *h) {
     int c = 0;
     while (h) {
         c++;
@@ -40,7 +40,7 @@ int len(ListNode* h) {
 }
 
 int main() {
-    ListNode* head = new ListNode(4);
+    ListNode *head = new ListNode(4);
     head->next = new ListNode(2);
     head->next->next = new ListNode(7);
     cout << len(head) << endl;

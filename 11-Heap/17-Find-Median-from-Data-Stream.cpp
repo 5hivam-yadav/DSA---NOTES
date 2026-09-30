@@ -4,31 +4,32 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Hard
 Pattern: Heap / Priority Queue
-Statement: Support addNum and findMedian over a stream using a max-heap for the lower half and min-heap for the upper half.
-Sample Input: add 1, add 2, median, add 3, median
-Sample Output: 1.5, 2.0
-Explanation: Sorted [1,2] medians 1.5; [1,2,3] medians 2.
+Statement: Support addNum and findMedian over a stream using a max-heap for the
+lower half and min-heap for the upper half. Sample Input: add 1, add 2, median,
+add 3, median Sample Output: 1.5, 2.0 Explanation: Sorted [1,2] medians 1.5;
+[1,2,3] medians 2.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class MedianFinder {
     priority_queue<int> lo;
     priority_queue<int, vector<int>, greater<int>> hi;
-public:
+
+  public:
     void addNum(int x) {
         lo.push(x);
         hi.push(lo.top());

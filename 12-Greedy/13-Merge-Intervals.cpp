@@ -9,30 +9,32 @@ Sample Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
 Sample Output: [[1,6],[8,10],[15,18]]
 Explanation: [1,3] and [2,6] merge into [1,6].
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    vector<vector<int>> merge(vector<vector<int>>& v) {
+  public:
+    vector<vector<int>> merge(vector<vector<int>> &v) {
         sort(v.begin(), v.end());
         vector<vector<int>> r;
-        for (auto& p : v) {
-            if (r.empty() || p[0] > r.back()[1]) r.push_back(p);
-            else r.back()[1] = max(r.back()[1], p[1]);
+        for (auto &p : v) {
+            if (r.empty() || p[0] > r.back()[1])
+                r.push_back(p);
+            else
+                r.back()[1] = max(r.back()[1], p[1]);
         }
         return r;
     }
@@ -44,7 +46,8 @@ int main() {
     Solution sol;
     auto ans = sol.merge(intervals);
     for (int i = 0; i < (int)ans.size(); i++) {
-        for (int j = 0; j < (int)ans[i].size(); j++) cout << ans[i][j] << " ";
+        for (int j = 0; j < (int)ans[i].size(); j++)
+            cout << ans[i][j] << " ";
         cout << endl;
     }
     return 0;

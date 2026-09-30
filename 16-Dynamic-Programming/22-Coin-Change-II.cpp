@@ -4,30 +4,29 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: DP - Coin Change
-Statement: Given amount and coins, count combinations making amount (unlimited coins, order ignored).
-Sample Input: amount = 5, coins = [1,2,5]
-Sample Output: 4
-Explanation: Four combos: 5; 2+2+1; 2+1+1+1; all 1s.
+Statement: Given amount and coins, count combinations making amount (unlimited
+coins, order ignored). Sample Input: amount = 5, coins = [1,2,5] Sample Output:
+4 Explanation: Four combos: 5; 2+2+1; 2+1+1+1; all 1s.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    int change(int amount, vector<int>& coins) {
+  public:
+    int change(int amount, vector<int> &coins) {
         vector<unsigned long long> dp(amount + 1, 0);
         dp[0] = 1;
         for (int c : coins) {

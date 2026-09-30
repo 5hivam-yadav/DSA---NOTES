@@ -9,28 +9,28 @@ Sample Input: a = 3, b = 5
 Sample Output: (5, 3)
 Explanation: Values exchange places.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-void xswap(int& a, int& b) {
+void xswap(int &a, int &b) {
     a ^= b;
     b ^= a;
     a ^= b;
 }
-  // Careful: same variable breaks; prefer std::swap.
+// Careful: same variable breaks; prefer std::swap.
 
 int main() {
     int a = 3;

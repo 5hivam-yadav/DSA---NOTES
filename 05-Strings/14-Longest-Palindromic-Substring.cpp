@@ -4,29 +4,28 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: Strings
-Statement: Given a string, return its longest palindromic substring (expand around each centre).
-Sample Input: s = "babad"
-Sample Output: "bab"
-Explanation: bab (or aba) is the longest palindrome inside.
+Statement: Given a string, return its longest palindromic substring (expand
+around each centre). Sample Input: s = "babad" Sample Output: "bab" Explanation:
+bab (or aba) is the longest palindrome inside.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     string longestPalindrome(string s) {
         int n = s.size(), bl = 0, bn = 1;
         auto exp = [&](int l, int r) {
@@ -46,7 +45,7 @@ public:
         return s.substr(bl, bn);
     }
 };
-  // Manacher O(n) also.
+// Manacher O(n) also.
 
 int main() {
     string s = "babad";

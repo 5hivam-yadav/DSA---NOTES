@@ -4,31 +4,31 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: Graph (BFS/DFS)
-Statement: Given an undirected graph, return true if a cycle exists using BFS with parent tracking.
-Sample Input: n = 3, edges = [[0,1],[1,2],[2,0]]
-Sample Output: true
-Explanation: Triangle edges form a cycle.
+Statement: Given an undirected graph, return true if a cycle exists using BFS
+with parent tracking. Sample Input: n = 3, edges = [[0,1],[1,2],[2,0]] Sample
+Output: true Explanation: Triangle edges form a cycle.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-bool cycBFS(int n, vector<vector<int>>& g) {
+bool cycBFS(int n, vector<vector<int>> &g) {
     vector<int> v(n, 0);
     for (int s = 0; s < n; s++) {
-        if (v[s]) continue;
+        if (v[s])
+            continue;
         queue<pair<int, int>> q;
         q.push({s, -1});
         v[s] = 1;
@@ -39,8 +39,8 @@ bool cycBFS(int n, vector<vector<int>>& g) {
                 if (!v[x]) {
                     v[x] = 1;
                     q.push({x, u});
-                }
-                else if (x != p) return true;
+                } else if (x != p)
+                    return true;
             }
         }
     }

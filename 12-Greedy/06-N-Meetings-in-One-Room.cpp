@@ -4,36 +4,38 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Greedy
-Statement: Given start/end times, return the maximum meetings in one room by sorting on end time.
-Sample Input: start = [1,3,0,5,8,5], end = [2,4,6,7,9,9]
+Statement: Given start/end times, return the maximum meetings in one room by
+sorting on end time. Sample Input: start = [1,3,0,5,8,5], end = [2,4,6,7,9,9]
 Sample Output: 4
 Explanation: Four non-overlapping meetings fit.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-int maxMeet(vector<int>& s, vector<int>& e) {
+int maxMeet(vector<int> &s, vector<int> &e) {
     vector<pair<int, int>> v;
-    for (size_t i = 0; i < s.size(); i++) v.push_back({e[i], s[i]});
+    for (size_t i = 0; i < s.size(); i++)
+        v.push_back({e[i], s[i]});
     sort(v.begin(), v.end());
     int c = 0, last = -1e9;
-    for (auto& p : v) if (p.second > last) {
-        c++;
-        last = p.first;
-    }
+    for (auto &p : v)
+        if (p.second > last) {
+            c++;
+            last = p.first;
+        }
     return c;
 }
 

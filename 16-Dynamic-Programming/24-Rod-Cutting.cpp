@@ -4,28 +4,28 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: DP - Knapsack
-Statement: Given prices for lengths 1..n and rod length n, maximize revenue with unlimited cuts (unbounded knapsack).
-Sample Input: price = [1,5,8,9,10,17,17,20], n = 8
-Sample Output: 22
-Explanation: Cut 2 + 6 gives 5 + 17 = 22.
+Statement: Given prices for lengths 1..n and rod length n, maximize revenue with
+unlimited cuts (unbounded knapsack). Sample Input: price =
+[1,5,8,9,10,17,17,20], n = 8 Sample Output: 22 Explanation: Cut 2 + 6 gives 5 +
+17 = 22.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-int rodCutting(vector<int>& price) {
+int rodCutting(vector<int> &price) {
     int n = (int)price.size();
     vector<int> dp(n + 1, 0);
     for (int len = 1; len <= n; len++) {

@@ -4,30 +4,29 @@ Platform: LeetCode
 Problem Number: -
 Difficulty: Medium
 Pattern: DP - Stocks
-Statement: Given prices, return max profit with at most two transactions (two-pass DP).
-Sample Input: prices = [3,3,5,0,0,3,1,4]
-Sample Output: 6
+Statement: Given prices, return max profit with at most two transactions
+(two-pass DP). Sample Input: prices = [3,3,5,0,0,3,1,4] Sample Output: 6
 Explanation: Buy 0 sell 3 (3) + buy 1 sell 4 (3) = 6.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    int maxProfit(vector<int>& p) {
+  public:
+    int maxProfit(vector<int> &p) {
         int b1 = INT_MAX, b2 = INT_MAX, s1 = 0, s2 = 0;
         for (int x : p) {
             b1 = min(b1, x);

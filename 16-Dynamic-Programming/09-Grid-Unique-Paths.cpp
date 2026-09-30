@@ -4,29 +4,28 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: DP on Grids
-Statement: Given m x n grid, count paths from top-left to bottom-right moving only down/right (combinatorial DP).
-Sample Input: m = 3, n = 7
-Sample Output: 28
+Statement: Given m x n grid, count paths from top-left to bottom-right moving
+only down/right (combinatorial DP). Sample Input: m = 3, n = 7 Sample Output: 28
 Explanation: C(8,2) = 28 monotone paths.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     int uniquePaths(int m, int n) {
         vector<int> dp(n, 1);
         for (int i = 1; i < m; i++) {

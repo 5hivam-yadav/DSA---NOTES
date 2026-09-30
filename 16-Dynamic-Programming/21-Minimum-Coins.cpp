@@ -4,30 +4,29 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: DP - Coin Change
-Statement: Given coin denominations and amount, return the minimum coins to make amount, or -1 if impossible (unbounded DP).
-Sample Input: coins = [1,2,5], amount = 11
-Sample Output: 3
-Explanation: 5 + 5 + 1 = 11 with 3 coins.
+Statement: Given coin denominations and amount, return the minimum coins to make
+amount, or -1 if impossible (unbounded DP). Sample Input: coins = [1,2,5],
+amount = 11 Sample Output: 3 Explanation: 5 + 5 + 1 = 11 with 3 coins.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    int coinChange(vector<int>& coins, int amount) {
+  public:
+    int coinChange(vector<int> &coins, int amount) {
         const int INF = 1e9;
         vector<int> dp(amount + 1, INF);
         dp[0] = 0;

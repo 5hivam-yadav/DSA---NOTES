@@ -4,29 +4,29 @@ Platform: GFG / Striver A2Z
 Problem Number: -
 Difficulty: Easy
 Pattern: Basics
-Statement: Given an integer n, count how many digits it contains. The number 0 has one digit.
-Sample Input: n = 7789
-Sample Output: 4
-Explanation: 7789 has four digits: 7, 7, 8, 9.
+Statement: Given an integer n, count how many digits it contains. The number 0
+has one digit. Sample Input: n = 7789 Sample Output: 4 Explanation: 7789 has
+four digits: 7, 7, 8, 9.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 int countDigits(int n) {
-    if (n == 0) return 1;
+    if (n == 0)
+        return 1;
     int c = 0;
     while (n > 0) {
         c++;

@@ -4,26 +4,25 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Strings
-Statement: Given a string, reverse the characters of each word while keeping word order.
-Sample Input: s = "Hello World"
-Sample Output: "olleH dlroW"
+Statement: Given a string, reverse the characters of each word while keeping
+word order. Sample Input: s = "Hello World" Sample Output: "olleH dlroW"
 Explanation: Each word is individually reversed.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
 #include <sstream>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 string revWords(string s) {
@@ -31,7 +30,8 @@ string revWords(string s) {
     string w, r;
     while (ss >> w) {
         reverse(w.begin(), w.end());
-        if (!r.empty()) r += ' ';
+        if (!r.empty())
+            r += ' ';
         r += w;
     }
     return r;

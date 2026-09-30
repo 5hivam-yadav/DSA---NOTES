@@ -4,30 +4,30 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Arrays
-Statement: Given an integer array, return its largest element with a single linear scan.
-Sample Input: a = [3, 7, 2, 9, 4]
-Sample Output: 9
-Explanation: 9 is the maximum of the sample array.
+Statement: Given an integer array, return its largest element with a single
+linear scan. Sample Input: a = [3, 7, 2, 9, 4] Sample Output: 9 Explanation: 9
+is the maximum of the sample array.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-int largest(vector<int>& a) {
+int largest(vector<int> &a) {
     int m = a[0];
-    for (int x : a) m = max(m, x);
+    for (int x : a)
+        m = max(m, x);
     return m;
 }
 

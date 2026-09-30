@@ -4,38 +4,43 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Hard
 Pattern: Backtracking
-Statement: Given a graph and m colours, decide if adjacent nodes can always differ (backtrack with validity check).
-Sample Input: n = 4, edges triangle + tail, m = 3
-Sample Output: true
-Explanation: Three colours suffice for this graph.
+Statement: Given a graph and m colours, decide if adjacent nodes can always
+differ (backtrack with validity check). Sample Input: n = 4, edges triangle +
+tail, m = 3 Sample Output: true Explanation: Three colours suffice for this
+graph.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-bool okC(int v, vector<vector<int>>& g, vector<int>& col, int c) {
-    for (int u : g[v]) if (col[u] == c) return false;
+bool okC(int v, vector<vector<int>> &g, vector<int> &col, int c) {
+    for (int u : g[v])
+        if (col[u] == c)
+            return false;
     return true;
 }
-bool f(int v, vector<vector<int>>& g, vector<int>& col, int m) {
-    if (v == (int)g.size()) return true;
-    for (int c = 1; c <= m; c++) if (okC(v, g, col, c)) {
-        col[v] = c;
-        if (f(v + 1, g, col, m)) return true;
-        col[v] = 0;
-    }
+bool f(int v, vector<vector<int>> &g, vector<int> &col, int m) {
+    if (v == (int)g.size())
+        return true;
+    for (int c = 1; c <= m; c++)
+        if (okC(v, g, col, c)) {
+            col[v] = c;
+            if (f(v + 1, g, col, m))
+                return true;
+            col[v] = 0;
+        }
     return false;
 }
 

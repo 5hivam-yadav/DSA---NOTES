@@ -4,35 +4,36 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Binary Search on Answer
-Statement: Given a strictly increasing array, return the k-th missing positive integer in O(log n).
-Sample Input: arr = [2,3,4,7,11], k = 5
-Sample Output: 9
+Statement: Given a strictly increasing array, return the k-th missing positive
+integer in O(log n). Sample Input: arr = [2,3,4,7,11], k = 5 Sample Output: 9
 Explanation: Missing are 1,5,6,8,9; the 5th is 9.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    int findKthPositive(vector<int>& a, int k) {
+  public:
+    int findKthPositive(vector<int> &a, int k) {
         int lo = 0, hi = (int)a.size();
         while (lo < hi) {
             int m = lo + (hi - lo) / 2;
-            if (a[m] - (m + 1) < k) lo = m + 1;
-            else hi = m;
+            if (a[m] - (m + 1) < k)
+                lo = m + 1;
+            else
+                hi = m;
         }
         return lo + k;
     }

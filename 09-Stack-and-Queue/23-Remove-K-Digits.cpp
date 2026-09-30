@@ -4,29 +4,29 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Monotonic Stack
-Statement: Given numeric string num and k, remove k digits to form the smallest possible number (monotonic stack, strip leading zeros).
-Sample Input: num = "1432219", k = 3
-Sample Output: "1219"
-Explanation: Removing 4, 3, 2 leaves the minimum 1219.
+Statement: Given numeric string num and k, remove k digits to form the smallest
+possible number (monotonic stack, strip leading zeros). Sample Input: num =
+"1432219", k = 3 Sample Output: "1219" Explanation: Removing 4, 3, 2 leaves the
+minimum 1219.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     string removeKdigits(string s, int k) {
         string st;
         for (char c : s) {
@@ -36,9 +36,11 @@ public:
             }
             st += c;
         }
-        while (k-- > 0 && !st.empty()) st.pop_back();
+        while (k-- > 0 && !st.empty())
+            st.pop_back();
         int i = 0;
-        while (i < (int)st.size() && st[i] == '0') i++;
+        while (i < (int)st.size() && st[i] == '0')
+            i++;
         string r = st.substr(i);
         return r.empty() ? "0" : r;
     }

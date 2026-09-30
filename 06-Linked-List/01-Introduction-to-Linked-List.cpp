@@ -4,33 +4,32 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Linked List
-Statement: Introduce singly linked list basics: build nodes 1->2->3 and traverse printing each value.
-Sample Input: values = [1,2,3]
-Sample Output: [1,2,3]
+Statement: Introduce singly linked list basics: build nodes 1->2->3 and traverse
+printing each value. Sample Input: values = [1,2,3] Sample Output: [1,2,3]
 Explanation: Head links 1 -> 2 -> 3 -> null.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 struct ListNode {
     int val;
-    ListNode* next;
-    ListNode(int x): val(x), next(nullptr) {}
+    ListNode *next;
+    ListNode(int x) : val(x), next(nullptr) {}
 };
-ListNode* build(vector<int>& v) {
+ListNode *build(vector<int> &v) {
     ListNode d(0);
     auto t = &d;
     for (int x : v) {
@@ -39,7 +38,7 @@ ListNode* build(vector<int>& v) {
     }
     return d.next;
 }
-int length(ListNode* h) {
+int length(ListNode *h) {
     int c = 0;
     while (h) {
         c++;
@@ -50,8 +49,8 @@ int length(ListNode* h) {
 
 int main() {
     vector<int> values = {1, 2, 3};
-    ListNode* head = build(values);
-    for (ListNode* cur = head; cur; cur = cur->next) {
+    ListNode *head = build(values);
+    for (ListNode *cur = head; cur; cur = cur->next) {
         cout << cur->val << (cur->next ? " " : "");
     }
     cout << endl;

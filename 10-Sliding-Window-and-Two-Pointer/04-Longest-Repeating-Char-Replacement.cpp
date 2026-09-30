@@ -4,29 +4,28 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Sliding Window
-Statement: Given s and k, find the longest substring achievable by replacing at most k chars to one letter.
-Sample Input: s = "ABAB", k = 2
-Sample Output: 4
+Statement: Given s and k, find the longest substring achievable by replacing at
+most k chars to one letter. Sample Input: s = "ABAB", k = 2 Sample Output: 4
 Explanation: "ABAB" becomes "AAAA" with 2 replacements.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     int characterReplacement(string s, int k) {
         int f[26] = {0}, l = 0, mx = 0, b = 0;
         for (int r = 0; r < (int)s.size(); r++) {

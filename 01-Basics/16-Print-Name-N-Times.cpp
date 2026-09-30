@@ -4,33 +4,33 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Basics
-Statement: Print a fixed name n times using recursion (print, then recurse with i + 1).
-Sample Input: n = 3
-Sample Output: name printed 3 times
-Explanation: Base case stops when i exceeds n.
+Statement: Print a fixed name n times using recursion (print, then recurse with
+i + 1). Sample Input: n = 3 Sample Output: name printed 3 times Explanation:
+Base case stops when i exceeds n.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 void f(int i, int n) {
-    if (i > n) return;
+    if (i > n)
+        return;
     cout << "Raj\n";
     f(i + 1, n);
 }
-  // call f(1, n)
+// call f(1, n)
 
 /*
 Approach:

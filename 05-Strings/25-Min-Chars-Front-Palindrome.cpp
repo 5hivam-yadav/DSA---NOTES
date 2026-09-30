@@ -4,28 +4,27 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Strings
-Statement: Given a string, return the minimum characters to prepend to make it a palindrome (KMP on s + '#' + reverse).
-Sample Input: s = "AACECAAAA"
-Sample Output: 2
-Explanation: Prepending "AA" gives "AAAACECAAAA".
+Statement: Given a string, return the minimum characters to prepend to make it a
+palindrome (KMP on s + '#' + reverse). Sample Input: s = "AACECAAAA" Sample
+Output: 2 Explanation: Prepending "AA" gives "AAAACECAAAA".
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-int minCharsToMakePalindrome(const string& s) {
+int minCharsToMakePalindrome(const string &s) {
     string rev = s;
     reverse(rev.begin(), rev.end());
     string t = s + "#" + rev;
@@ -33,8 +32,10 @@ int minCharsToMakePalindrome(const string& s) {
     vector<int> lps(n, 0);
     for (int i = 1; i < n; i++) {
         int j = lps[i - 1];
-        while (j > 0 && t[i] != t[j]) j = lps[j - 1];
-        if (t[i] == t[j]) j++;
+        while (j > 0 && t[i] != t[j])
+            j = lps[j - 1];
+        if (t[i] == t[j])
+            j++;
         lps[i] = j;
     }
     return (int)s.size() - lps.back();

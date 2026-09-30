@@ -4,25 +4,24 @@ Platform: GFG / Striver A2Z
 Problem Number: -
 Difficulty: Easy
 Pattern: Maths
-Statement: Given two integers a and b, return their greatest common divisor; LCM follows as a / gcd * b.
-Sample Input: a = 36, b = 60
-Sample Output: 12
+Statement: Given two integers a and b, return their greatest common divisor; LCM
+follows as a / gcd * b. Sample Input: a = 36, b = 60 Sample Output: 12
 Explanation: The largest integer dividing both is 12.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 long long gcdll(long long a, long long b) {
@@ -33,9 +32,7 @@ long long gcdll(long long a, long long b) {
     }
     return a;
 }
-long long lcml(long long a, long long b) {
-    return a / gcdll(a, b) * b;
-}
+long long lcml(long long a, long long b) { return a / gcdll(a, b) * b; }
 
 /*
 Approach:

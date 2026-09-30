@@ -4,38 +4,40 @@ Platform: LeetCode
 Problem Number: -
 Difficulty: Hard
 Pattern: DP - Strings
-Statement: Given strings s and t, count distinct subsequences of s equal to t (DP over prefixes).
-Sample Input: s = "rabbbit", t = "rabbit"
-Sample Output: 3
+Statement: Given strings s and t, count distinct subsequences of s equal to t
+(DP over prefixes). Sample Input: s = "rabbbit", t = "rabbit" Sample Output: 3
 Explanation: Three ways to delete to form rabbit.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     int numDistinct(string s, string t) {
         int n = s.size(), m = t.size();
         vector<double> dp(m + 1, 0);
         dp[0] = 1;
-        for (int i = 1; i <= n; i++) for (int j = m; j >= 1; j--) if (s[i-1] == t[j-1]) dp[j] += dp[j-1];
+        for (int i = 1; i <= n; i++)
+            for (int j = m; j >= 1; j--)
+                if (s[i - 1] == t[j - 1])
+                    dp[j] += dp[j - 1];
         return (int)dp[m];
     }
 };
-  // double avoids overflow; mod variant uses 1e9+7.
+// double avoids overflow; mod variant uses 1e9+7.
 
 int main() {
     string s = "rabbbit";

@@ -4,30 +4,30 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Hard
 Pattern: Monotonic Stack
-Statement: Given bar heights, return the largest rectangle area (previous/next smaller with a monotonic stack).
-Sample Input: heights = [2, 1, 5, 6, 2, 3]
+Statement: Given bar heights, return the largest rectangle area (previous/next
+smaller with a monotonic stack). Sample Input: heights = [2, 1, 5, 6, 2, 3]
 Sample Output: 10
 Explanation: Bars [5, 6] with height 5 span width 2.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    int largestRectangleArea(vector<int>& h) {
+  public:
+    int largestRectangleArea(vector<int> &h) {
         h.push_back(0);
         vector<int> st;
         int b = 0;

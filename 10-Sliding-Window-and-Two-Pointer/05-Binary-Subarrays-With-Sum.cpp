@@ -4,31 +4,31 @@ Platform: LeetCode
 Problem Number: -
 Difficulty: Easy
 Pattern: Sliding Window
-Statement: Given a binary array and goal, count subarrays summing to goal via prefix sums (or atMost(K) - atMost(K-1)).
-Sample Input: nums = [1,0,1,0,1], goal = 2
-Sample Output: 4
-Explanation: Four windows contain exactly two 1s.
+Statement: Given a binary array and goal, count subarrays summing to goal via
+prefix sums (or atMost(K) - atMost(K-1)). Sample Input: nums = [1,0,1,0,1], goal
+= 2 Sample Output: 4 Explanation: Four windows contain exactly two 1s.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    int atMost(vector<int>& a, int k) {
-        if (k < 0) return 0;
+  public:
+    int atMost(vector<int> &a, int k) {
+        if (k < 0)
+            return 0;
         int l = 0, s = 0, r = 0;
         for (int rr = 0; rr < (int)a.size(); rr++) {
             s += a[rr];
@@ -39,7 +39,7 @@ public:
         }
         return r;
     }
-    int numSubarraysWithSum(vector<int>& a, int k) {
+    int numSubarraysWithSum(vector<int> &a, int k) {
         return atMost(a, k) - atMost(a, k - 1);
     }
 };

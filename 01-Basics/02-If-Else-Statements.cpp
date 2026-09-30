@@ -9,29 +9,34 @@ Sample Input: m = 82
 Sample Output: B
 Explanation: 82 falls in the 75-89 band, so the grade is B.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 // Striver A2Z: If-Else ladder
 string grade(int marks) {
-    if (marks >= 90) return "A";
-    else if (marks >= 75) return "B";
-    else if (marks >= 60) return "C";
-    else if (marks >= 40) return "D";
-    else return "F";
+    if (marks >= 90)
+        return "A";
+    else if (marks >= 75)
+        return "B";
+    else if (marks >= 60)
+        return "C";
+    else if (marks >= 40)
+        return "D";
+    else
+        return "F";
 }
 
 int main() {

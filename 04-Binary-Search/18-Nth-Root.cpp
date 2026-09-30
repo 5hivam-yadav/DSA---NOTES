@@ -4,31 +4,31 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Binary Search
-Statement: Given n and m, return floor of the n-th root of m using binary search on the answer.
-Sample Input: n = 3, m = 27
-Sample Output: 3
-Explanation: 3^3 = 27 exactly.
+Statement: Given n and m, return floor of the n-th root of m using binary search
+on the answer. Sample Input: n = 3, m = 27 Sample Output: 3 Explanation: 3^3 =
+27 exactly.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 long long pw(long long b, int e, long long lim) {
     long long r = 1;
     while (e--) {
-        if (r > lim / b) return lim + 1;
+        if (r > lim / b)
+            return lim + 1;
         r *= b;
     }
     return r;
@@ -38,9 +38,12 @@ int nthRoot(int n, int m) {
     while (lo <= hi) {
         int mid = lo + (hi - lo) / 2;
         long long v = pw(mid, n, m);
-        if (v == m) return mid;
-        else if (v < m) lo = mid + 1;
-        else hi = mid - 1;
+        if (v == m)
+            return mid;
+        else if (v < m)
+            lo = mid + 1;
+        else
+            hi = mid - 1;
     }
     return -1;
 }

@@ -4,32 +4,32 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: Backtracking
-Statement: Given an array and k, return true if some subset sums to k (DP over achievable sums).
-Sample Input: a = [3,34,4,12,5,2], k = 9
-Sample Output: true
+Statement: Given an array and k, return true if some subset sums to k (DP over
+achievable sums). Sample Input: a = [3,34,4,12,5,2], k = 9 Sample Output: true
 Explanation: Subset [4,5] sums to 9.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-bool subsetSumToK(vector<int>& a, int K) {
+bool subsetSumToK(vector<int> &a, int K) {
     vector<char> dp(K + 1, 0);
     dp[0] = 1;
     for (int x : a) {
-        for (int s = K; s >= x; s--) dp[s] = dp[s] || dp[s - x];
+        for (int s = K; s >= x; s--)
+            dp[s] = dp[s] || dp[s - x];
     }
     return dp[K];
 }

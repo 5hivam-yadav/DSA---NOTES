@@ -4,25 +4,24 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: DP on Grids
-Statement: Given row r and column c (1-indexed), return the element of Pascal's triangle at that position (nCr).
-Sample Input: r = 5, c = 3
-Sample Output: 6
+Statement: Given row r and column c (1-indexed), return the element of Pascal's
+triangle at that position (nCr). Sample Input: r = 5, c = 3 Sample Output: 6
 Explanation: Row 5 is [1,4,6,4,1]; the 3rd value is 6.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 vector<long long> pascalRow(int n) {
@@ -40,7 +39,8 @@ int main() {
     int c = 3;
 
     auto ans = pascalRow(r);
-    for (int i = 0; i < (int)ans.size(); i++) cout << ans[i] << " ";
+    for (int i = 0; i < (int)ans.size(); i++)
+        cout << ans[i] << " ";
     cout << endl;
     return 0;
 }

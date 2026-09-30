@@ -4,32 +4,32 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Bit Manipulation
-Statement: Given an array where every element appears twice except one, return that single one with XOR.
-Sample Input: nums = [4, 1, 2, 1, 2]
-Sample Output: 4
+Statement: Given an array where every element appears twice except one, return
+that single one with XOR. Sample Input: nums = [4, 1, 2, 1, 2] Sample Output: 4
 Explanation: Pairs cancel in XOR, leaving 4.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    int singleNumber(vector<int>& a) {
+  public:
+    int singleNumber(vector<int> &a) {
         int x = 0;
-        for (int v : a) x ^= v;
+        for (int v : a)
+            x ^= v;
         return x;
     }
 };

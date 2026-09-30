@@ -4,30 +4,31 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: Monotonic Stack
-Statement: Given daily prices, return the span of each day (consecutive days <= today, including today) with a monotonic stack.
-Sample Input: prices = [100, 80, 60, 70, 60, 75, 85]
-Sample Output: [1, 1, 1, 2, 1, 4, 6]
-Explanation: Day 6 sees back to day 1 (75 down to 80 blocks).
+Statement: Given daily prices, return the span of each day (consecutive days <=
+today, including today) with a monotonic stack. Sample Input: prices = [100, 80,
+60, 70, 60, 75, 85] Sample Output: [1, 1, 1, 2, 1, 4, 6] Explanation: Day 6 sees
+back to day 1 (75 down to 80 blocks).
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class StockSpanner {
     vector<int> p, v;
-public:
+
+  public:
     int next(int x) {
         int s = 1;
         while (!v.empty() && v.back() <= x) {

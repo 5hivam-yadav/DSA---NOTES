@@ -9,26 +9,26 @@ Sample Input: nums = [1,2,3]
 Sample Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,2,1],[3,1,2]]
 Explanation: 3! = 6 orderings.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     vector<vector<int>> ans;
-    void f(int i, vector<int>& a) {
+    void f(int i, vector<int> &a) {
         if (i == (int)a.size()) {
             ans.push_back(a);
             return;
@@ -39,7 +39,7 @@ public:
             swap(a[i], a[j]);
         }
     }
-    vector<vector<int>> permute(vector<int>& a) {
+    vector<vector<int>> permute(vector<int> &a) {
         f(0, a);
         return ans;
     }
@@ -51,7 +51,8 @@ int main() {
     Solution sol;
     auto ans = sol.permute(nums);
     for (int i = 0; i < (int)ans.size(); i++) {
-        for (int j = 0; j < (int)ans[i].size(); j++) cout << ans[i][j] << " ";
+        for (int j = 0; j < (int)ans[i].size(); j++)
+            cout << ans[i][j] << " ";
         cout << endl;
     }
     return 0;

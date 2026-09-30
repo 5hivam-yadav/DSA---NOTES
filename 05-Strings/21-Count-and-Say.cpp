@@ -4,36 +4,36 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Strings
-Statement: Given n, return the n-th count-and-say string by reading off runs of the previous term.
-Sample Input: n = 4
-Sample Output: "1211"
-Explanation: 1 -> 11 -> 21 -> 1211 by describing runs.
+Statement: Given n, return the n-th count-and-say string by reading off runs of
+the previous term. Sample Input: n = 4 Sample Output: "1211" Explanation: 1 ->
+11 -> 21 -> 1211 by describing runs.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     string countAndSay(int n) {
         string cur = "1";
         for (int k = 2; k <= n; k++) {
             string nxt;
-            for (size_t i = 0; i < cur.size(); ) {
+            for (size_t i = 0; i < cur.size();) {
                 size_t j = i;
-                while (j < cur.size() && cur[j] == cur[i]) j++;
+                while (j < cur.size() && cur[j] == cur[i])
+                    j++;
                 nxt += to_string(j - i);
                 nxt += cur[i];
                 i = j;

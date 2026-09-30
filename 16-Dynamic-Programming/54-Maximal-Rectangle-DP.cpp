@@ -4,30 +4,30 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Hard
 Pattern: Monotonic Stack
-Statement: Given a binary matrix, return the largest all-1 rectangle area (histogram per row + stack).
-Sample Input: matrix rows ["101","111","011"]
+Statement: Given a binary matrix, return the largest all-1 rectangle area
+(histogram per row + stack). Sample Input: matrix rows ["101","111","011"]
 Sample Output: 6
 Explanation: A 2x3 block of 1s is the largest.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    int largestHist(vector<int>& h) {
+  public:
+    int largestHist(vector<int> &h) {
         h.push_back(0);
         vector<int> st;
         int b = 0;
@@ -43,12 +43,14 @@ public:
         h.pop_back();
         return b;
     }
-    int maximalRectangle(vector<vector<char>>& m) {
-        if (m.empty()) return 0;
+    int maximalRectangle(vector<vector<char>> &m) {
+        if (m.empty())
+            return 0;
         int C = m[0].size(), b = 0;
         vector<int> h(C, 0);
-        for (auto& r : m) {
-            for (int j = 0; j < C; j++) h[j] = (r[j] == '1' ? h[j] + 1 : 0);
+        for (auto &r : m) {
+            for (int j = 0; j < C; j++)
+                h[j] = (r[j] == '1' ? h[j] + 1 : 0);
             b = max(b, largestHist(h));
         }
         return b;

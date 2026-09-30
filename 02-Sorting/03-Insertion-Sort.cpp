@@ -4,29 +4,29 @@ Platform: GFG / Striver A2Z
 Problem Number: -
 Difficulty: Easy
 Pattern: Sorting
-Statement: Sort the array in non-decreasing order in place using insertion sort: insert each element into the sorted prefix.
-Sample Input: arr = [12, 11, 13, 5, 6]
-Sample Output: [5,6,11,12,13]
-Explanation: The left prefix stays sorted as it grows.
+Statement: Sort the array in non-decreasing order in place using insertion sort:
+insert each element into the sorted prefix. Sample Input: arr = [12, 11, 13, 5,
+6] Sample Output: [5,6,11,12,13] Explanation: The left prefix stays sorted as it
+grows.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 // Striver A2Z: Insertion Sort
-void insertion_sort(vector<int>& arr, int n) {
+void insertion_sort(vector<int> &arr, int n) {
     for (int i = 0; i <= n - 1; i++) {
         int j = i;
         while (j > 0 && arr[j - 1] > arr[j]) {
@@ -42,7 +42,8 @@ int main() {
 
     insertion_sort(arr, n);
 
-    for (int i = 0; i < n; i++) cout << arr[i] << " ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
     cout << endl;
     return 0;
 }

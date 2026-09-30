@@ -4,37 +4,38 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: Backtracking
-Statement: Given an array, return true if it splits into two equal-sum subsets (subset-sum DP on total/2).
-Sample Input: nums = [1,5,11,5]
-Sample Output: true
+Statement: Given an array, return true if it splits into two equal-sum subsets
+(subset-sum DP on total/2). Sample Input: nums = [1,5,11,5] Sample Output: true
 Explanation: Subsets [1,5,5] and [11] both sum to 11.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    bool canPartition(vector<int>& a) {
+  public:
+    bool canPartition(vector<int> &a) {
         int sum = accumulate(a.begin(), a.end(), 0);
-        if (sum % 2) return false;
+        if (sum % 2)
+            return false;
         int K = sum / 2;
         vector<char> dp(K + 1, 0);
         dp[0] = 1;
         for (int x : a)
-        for (int s = K; s >= x; s--) dp[s] = dp[s] || dp[s - x];
+            for (int s = K; s >= x; s--)
+                dp[s] = dp[s] || dp[s - x];
         return dp[K];
     }
 };

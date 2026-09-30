@@ -4,31 +4,31 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Maths
-Statement: Given an integer x, return true if x reads the same forwards and backwards, otherwise false. Negatives are never palindromes.
-Sample Input: x = 121
-Sample Output: true
-Explanation: 121 reversed is still 121.
+Statement: Given an integer x, return true if x reads the same forwards and
+backwards, otherwise false. Negatives are never palindromes. Sample Input: x =
+121 Sample Output: true Explanation: 121 reversed is still 121.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     bool isPalindrome(int x) {
-        if (x < 0) return false;
+        if (x < 0)
+            return false;
         long long r = 0, t = x;
         while (t) {
             r = r * 10 + t % 10;

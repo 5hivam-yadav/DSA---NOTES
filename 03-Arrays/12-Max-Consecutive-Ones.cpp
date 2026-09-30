@@ -9,25 +9,25 @@ Sample Input: a = [1, 1, 0, 1, 1, 1]
 Sample Output: 3
 Explanation: The longest run of 1s has length 3.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    int findMaxConsecutiveOnes(vector<int>& a) {
+  public:
+    int findMaxConsecutiveOnes(vector<int> &a) {
         int b = 0, c = 0;
         for (int x : a) {
             c = (x == 1 ? c + 1 : 0);

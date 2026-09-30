@@ -4,45 +4,47 @@ Platform: LeetCode
 Problem Number: -
 Difficulty: Medium
 Pattern: DP - LIS
-Statement: Given an array, count how many longest increasing subsequences exist (length DP + count DP).
-Sample Input: nums = [1,3,5,4,7]
-Sample Output: 2
+Statement: Given an array, count how many longest increasing subsequences exist
+(length DP + count DP). Sample Input: nums = [1,3,5,4,7] Sample Output: 2
 Explanation: LIS length 4 via [1,3,4,7] and [1,3,5,7].
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    int findNumberOfLIS(vector<int>& a) {
+  public:
+    int findNumberOfLIS(vector<int> &a) {
         int n = a.size();
         vector<int> len(n, 1), cnt(n, 1);
         int b = 1;
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < i; j++) if (a[j] < a[i]) {
-                if (len[j] + 1 > len[i]) {
-                    len[i] = len[j] + 1;
-                    cnt[i] = cnt[j];
+            for (int j = 0; j < i; j++)
+                if (a[j] < a[i]) {
+                    if (len[j] + 1 > len[i]) {
+                        len[i] = len[j] + 1;
+                        cnt[i] = cnt[j];
+                    } else if (len[j] + 1 == len[i])
+                        cnt[i] += cnt[j];
                 }
-                else if (len[j] + 1 == len[i]) cnt[i] += cnt[j];
-            }
             b = max(b, len[i]);
         }
         int ans = 0;
-        for (int i = 0; i < n; i++) if (len[i] == b) ans += cnt[i];
+        for (int i = 0; i < n; i++)
+            if (len[i] == b)
+                ans += cnt[i];
         return ans;
     }
 };

@@ -4,30 +4,31 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Basics
-Statement: Given an integer array, return its sum; given a string, return its reverse. Covers basic array and string traversal.
-Sample Input: a = [1, 2, 3], s = "abc"
-Sample Output: 6, "cba"
-Explanation: 1+2+3 = 6 and "abc" reversed is "cba".
+Statement: Given an integer array, return its sum; given a string, return its
+reverse. Covers basic array and string traversal. Sample Input: a = [1, 2, 3], s
+= "abc" Sample Output: 6, "cba" Explanation: 1+2+3 = 6 and "abc" reversed is
+"cba".
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-int arrSum(vector<int>& a) {
+int arrSum(vector<int> &a) {
     int s = 0;
-    for (int x : a) s += x;
+    for (int x : a)
+        s += x;
     return s;
 }
 string revStr(string s) {

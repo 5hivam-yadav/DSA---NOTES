@@ -4,45 +4,43 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Greedy
-Statement: Given a string of ( ) and *, return true if stars can act as brackets to balance it (greedy ranges).
-Sample Input: s = "(*))"
-Sample Output: true
+Statement: Given a string of ( ) and *, return true if stars can act as brackets
+to balance it (greedy ranges). Sample Input: s = "(*))" Sample Output: true
 Explanation: Star acts as ( to balance the extra ).
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     bool checkValidString(string s) {
         int lo = 0, hi = 0;
         for (char c : s) {
             if (c == '(') {
                 lo++;
                 hi++;
-            }
-            else if (c == ')') {
+            } else if (c == ')') {
                 lo--;
                 hi--;
-            }
-            else {
+            } else {
                 lo--;
                 hi++;
             }
-            if (hi < 0) return false;
+            if (hi < 0)
+                return false;
             lo = max(lo, 0);
         }
         return lo == 0;

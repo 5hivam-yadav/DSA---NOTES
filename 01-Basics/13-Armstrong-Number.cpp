@@ -4,25 +4,24 @@ Platform: GFG / Striver A2Z
 Problem Number: -
 Difficulty: Easy
 Pattern: Maths
-Statement: Given n, return true if it is an Armstrong number (sum of its digits each raised to the digit count equals n).
-Sample Input: n = 153
-Sample Output: true
-Explanation: 1^3 + 5^3 + 3^3 = 153.
+Statement: Given n, return true if it is an Armstrong number (sum of its digits
+each raised to the digit count equals n). Sample Input: n = 153 Sample Output:
+true Explanation: 1^3 + 5^3 + 3^3 = 153.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 bool armstrong(int n) {

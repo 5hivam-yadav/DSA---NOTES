@@ -9,31 +9,32 @@ Sample Input: n = 5
 Sample Output: 1
 Explanation: 1^2^3^4^5 = 1.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 int xorN(int n) {
-    if (n % 4 == 0) return n;
-    if (n % 4 == 1) return 1;
-    if (n % 4 == 2) return n + 1;
+    if (n % 4 == 0)
+        return n;
+    if (n % 4 == 1)
+        return 1;
+    if (n % 4 == 2)
+        return n + 1;
     return 0;
 }
-int xorLR(int l, int r) {
-    return xorN(r) ^ xorN(l - 1);
-}
+int xorLR(int l, int r) { return xorN(r) ^ xorN(l - 1); }
 
 /*
 Approach:

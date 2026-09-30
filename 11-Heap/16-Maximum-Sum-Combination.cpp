@@ -4,28 +4,28 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: Backtracking
-Statement: Given arrays A, B and k, return the k maximum sums of pairs (a in A, b in B) using a max-heap + visited set.
-Sample Input: A = [4,2,5,1], B = [8,0,3,5], k = 3
-Sample Output: [13, 12, 10]
-Explanation: Pairs (5,8),(4,8),(5,5) give top sums.
+Statement: Given arrays A, B and k, return the k maximum sums of pairs (a in A,
+b in B) using a max-heap + visited set. Sample Input: A = [4,2,5,1], B =
+[8,0,3,5], k = 3 Sample Output: [13, 12, 10] Explanation: Pairs
+(5,8),(4,8),(5,5) give top sums.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-vector<int> maxComb(vector<int>& a, vector<int>& b, int k) {
+vector<int> maxComb(vector<int> &a, vector<int> &b, int k) {
     sort(a.begin(), a.end(), greater<int>());
     sort(b.begin(), b.end(), greater<int>());
     int n = a.size();
@@ -56,7 +56,8 @@ int main() {
     int k = 3;
 
     auto ans = maxComb(A, B, k);
-    for (int i = 0; i < (int)ans.size(); i++) cout << ans[i] << " ";
+    for (int i = 0; i < (int)ans.size(); i++)
+        cout << ans[i] << " ";
     cout << endl;
     return 0;
 }

@@ -4,29 +4,28 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Strings
-Statement: Given strings a and b, return the minimum repeats of a so b is a substring, or -1.
-Sample Input: a = "abcd", b = "cdabcdab"
-Sample Output: 3
+Statement: Given strings a and b, return the minimum repeats of a so b is a
+substring, or -1. Sample Input: a = "abcd", b = "cdabcdab" Sample Output: 3
 Explanation: "abcd" x 3 contains "cdabcdab".
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     int repeatedStringMatch(string a, string b) {
         string t = a;
         int cnt = 1;
@@ -34,9 +33,11 @@ public:
             t += a;
             cnt++;
         }
-        if (t.find(b) != string::npos) return cnt;
+        if (t.find(b) != string::npos)
+            return cnt;
         t += a;
-        if (t.find(b) != string::npos) return cnt + 1;
+        if (t.find(b) != string::npos)
+            return cnt + 1;
         return -1;
     }
 };

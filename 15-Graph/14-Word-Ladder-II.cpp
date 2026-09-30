@@ -4,30 +4,30 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Hard
 Pattern: Graph (BFS/DFS)
-Statement: Given beginWord, endWord and a word list, return all shortest transformation sequences (BFS + backtrack).
-Sample Input: begin = "hit", end = "cog"
-Sample Output: [["hit","hot","lot","log","cog"]]
-Explanation: One shortest chain of 5 words.
+Statement: Given beginWord, endWord and a word list, return all shortest
+transformation sequences (BFS + backtrack). Sample Input: begin = "hit", end =
+"cog" Sample Output: [["hit","hot","lot","log","cog"]] Explanation: One shortest
+chain of 5 words.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    vector<vector<string>> findLadders(string b, string e, vector<string>& w) {
+  public:
+    vector<vector<string>> findLadders(string b, string e, vector<string> &w) {
         unordered_set<string> s(w.begin(), w.end());
         vector<vector<string>> ans;
         queue<vector<string>> q;
@@ -59,7 +59,8 @@ public:
                     }
                 }
             }
-            for (auto& x : lvl) vis.insert(x);
+            for (auto &x : lvl)
+                vis.insert(x);
         }
         return ans;
     }

@@ -4,28 +4,27 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: DP - 1D
-Statement: Given an array, return the maximum sum picking no adjacent elements (take/skip DP).
-Sample Input: a = [2, 1, 4, 9]
-Sample Output: 11
-Explanation: Pick 2 + 9 = 11.
+Statement: Given an array, return the maximum sum picking no adjacent elements
+(take/skip DP). Sample Input: a = [2, 1, 4, 9] Sample Output: 11 Explanation:
+Pick 2 + 9 = 11.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-int nonAdj(vector<int>& a) {
+int nonAdj(vector<int> &a) {
     int p2 = 0, p1 = 0;
     for (int x : a) {
         int c = max(p1, p2 + x);

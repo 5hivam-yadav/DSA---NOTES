@@ -9,37 +9,38 @@ Sample Input: head = [1, 5, 3], x = 5
 Sample Output: true
 Explanation: Node with 5 is found.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 struct ListNode {
     int val;
-    ListNode* next;
-    ListNode(int x): val(x), next(nullptr) {}
+    ListNode *next;
+    ListNode(int x) : val(x), next(nullptr) {}
 };
-bool find(ListNode* h, int x) {
+bool find(ListNode *h, int x) {
     while (h) {
-        if (h->val == x) return true;
+        if (h->val == x)
+            return true;
         h = h->next;
     }
     return false;
 }
 
 int main() {
-    ListNode* head = new ListNode(1);
+    ListNode *head = new ListNode(1);
     head->next = new ListNode(5);
     head->next->next = new ListNode(3);
     cout << (find(head, 5) ? "true" : "false") << endl;

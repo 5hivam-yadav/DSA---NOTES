@@ -4,31 +4,31 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Recursion / DP
-Statement: Given n, return the n-th Fibonacci number with F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2).
-Sample Input: n = 7
-Sample Output: 13
-Explanation: Sequence reaches 13 at index 7.
+Statement: Given n, return the n-th Fibonacci number with F(0)=0, F(1)=1,
+F(n)=F(n-1)+F(n-2). Sample Input: n = 7 Sample Output: 13 Explanation: Sequence
+reaches 13 at index 7.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     int fib(int n) {
-        if (n <= 1) return n;
+        if (n <= 1)
+            return n;
         int a = 0, b = 1;
         for (int i = 2; i <= n; i++) {
             int c = a + b;
@@ -38,7 +38,7 @@ public:
         return b;
     }
 };
-  // Brute recursion O(2^n); memo O(n)/O(n); above O(n)/O(1).
+// Brute recursion O(2^n); memo O(n)/O(n); above O(n)/O(1).
 
 int main() {
     int n = 7;

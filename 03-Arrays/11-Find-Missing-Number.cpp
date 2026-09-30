@@ -4,33 +4,34 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Arrays
-Statement: Given n distinct numbers from 0..n, return the missing number using sum or XOR.
-Sample Input: a = [3, 0, 1]
-Sample Output: 2
-Explanation: 0, 1, 3 are present, so 2 is missing.
+Statement: Given n distinct numbers from 0..n, return the missing number using
+sum or XOR. Sample Input: a = [3, 0, 1] Sample Output: 2 Explanation: 0, 1, 3
+are present, so 2 is missing.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    int missingNumber(vector<int>& a) {
+  public:
+    int missingNumber(vector<int> &a) {
         int x = 0;
-        for (int i = 0; i <= (int)a.size(); i++) x ^= i;
-        for (int v : a) x ^= v;
+        for (int i = 0; i <= (int)a.size(); i++)
+            x ^= i;
+        for (int v : a)
+            x ^= v;
         return x;
     }
 };

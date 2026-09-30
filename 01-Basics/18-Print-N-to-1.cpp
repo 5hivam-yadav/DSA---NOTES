@@ -9,24 +9,25 @@ Sample Input: n = 4
 Sample Output: 4 3 2 1
 Explanation: Each call prints n then recurses with n - 1.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 void f(int n) {
-    if (n == 0) return;
+    if (n == 0)
+        return;
     cout << n << ' ';
     f(n - 1);
 }

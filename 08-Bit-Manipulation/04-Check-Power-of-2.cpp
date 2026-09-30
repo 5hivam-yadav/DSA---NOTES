@@ -4,32 +4,29 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Maths
-Statement: Given n, return true if n is a power of two (n > 0 and (n & (n-1)) == 0).
-Sample Input: n = 16
-Sample Output: true
-Explanation: 16 is 10000 with a single set bit.
+Statement: Given n, return true if n is a power of two (n > 0 and (n & (n-1)) ==
+0). Sample Input: n = 16 Sample Output: true Explanation: 16 is 10000 with a
+single set bit.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    bool isPowerOfTwo(int n) {
-        return n > 0 && (n & (n - 1)) == 0;
-    }
+  public:
+    bool isPowerOfTwo(int n) { return n > 0 && (n & (n - 1)) == 0; }
 };
 
 int main() {

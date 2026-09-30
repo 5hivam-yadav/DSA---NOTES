@@ -9,24 +9,25 @@ Sample Input: n = 5
 Sample Output: 120
 Explanation: 5 * 4 * 3 * 2 * 1 = 120.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 long long fact(int n) {
-    if (n <= 1) return 1;
+    if (n <= 1)
+        return 1;
     return 1LL * n * fact(n - 1);
 }
 

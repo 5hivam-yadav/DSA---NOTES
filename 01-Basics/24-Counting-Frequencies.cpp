@@ -4,30 +4,31 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Basics
-Statement: Given an array with values in 1..k, return the frequency of each value.
-Sample Input: a = [1, 2, 1, 3, 2, 1], k = 3
-Sample Output: [3, 2, 1]
+Statement: Given an array with values in 1..k, return the frequency of each
+value. Sample Input: a = [1, 2, 1, 3, 2, 1], k = 3 Sample Output: [3, 2, 1]
 Explanation: 1 appears 3 times, 2 twice, 3 once.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-vector<int> freq(vector<int>& a, int k) {
+vector<int> freq(vector<int> &a, int k) {
     vector<int> f(k, 0);
-    for (int x : a) if (x >= 1 && x <= k) f[x - 1]++;
+    for (int x : a)
+        if (x >= 1 && x <= k)
+            f[x - 1]++;
     return f;
 }
 
@@ -36,7 +37,8 @@ int main() {
     int k = 3;
 
     auto ans = freq(a, k);
-    for (int i = 0; i < (int)ans.size(); i++) cout << ans[i] << " ";
+    for (int i = 0; i < (int)ans.size(); i++)
+        cout << ans[i] << " ";
     cout << endl;
     return 0;
 }

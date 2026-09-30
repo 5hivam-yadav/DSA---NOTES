@@ -9,35 +9,37 @@ Sample Input: nums = [1,1,2]
 Sample Output: [[1,1,2],[1,2,1],[2,1,1]]
 Explanation: Three distinct orderings exist.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     vector<vector<int>> ans;
     vector<int> ds;
     vector<int> used;
-    void f(vector<int>& a) {
+    void f(vector<int> &a) {
         if (ds.size() == a.size()) {
             ans.push_back(ds);
             return;
         }
         for (size_t i = 0; i < a.size(); i++) {
-            if (used[i]) continue;
-            if (i > 0 && a[i] == a[i-1] && !used[i-1]) continue;
+            if (used[i])
+                continue;
+            if (i > 0 && a[i] == a[i - 1] && !used[i - 1])
+                continue;
             used[i] = 1;
             ds.push_back(a[i]);
             f(a);
@@ -45,7 +47,7 @@ public:
             used[i] = 0;
         }
     }
-    vector<vector<int>> permuteUnique(vector<int>& a) {
+    vector<vector<int>> permuteUnique(vector<int> &a) {
         sort(a.begin(), a.end());
         used.assign(a.size(), 0);
         f(a);
@@ -60,7 +62,8 @@ int main() {
     cout << "[";
     for (size_t i = 0; i < ans.size(); i++) {
         cout << "[";
-        for (size_t j = 0; j < ans[i].size(); j++) cout << ans[i][j] << (j + 1 < ans[i].size() ? "," : "");
+        for (size_t j = 0; j < ans[i].size(); j++)
+            cout << ans[i][j] << (j + 1 < ans[i].size() ? "," : "");
         cout << "]" << (i + 1 < ans.size() ? "," : "");
     }
     cout << "]" << endl;

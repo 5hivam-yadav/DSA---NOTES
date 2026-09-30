@@ -4,30 +4,31 @@ Platform: GFG / Striver A2Z
 Problem Number: -
 Difficulty: Easy
 Pattern: Sorting
-Statement: Sort the array using recursive insertion sort: sort first n-1, then insert the last element into place.
-Sample Input: arr = [12, 11, 13, 5, 6]
+Statement: Sort the array using recursive insertion sort: sort first n-1, then
+insert the last element into place. Sample Input: arr = [12, 11, 13, 5, 6]
 Sample Output: [5,6,11,12,13]
 Explanation: Recursion sorts the prefix before inserting.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 // Striver A2Z: Recursive Insertion Sort
-void insertion_sort(vector<int>& arr, int i, int n) {
-    if (i == n) return;
+void insertion_sort(vector<int> &arr, int i, int n) {
+    if (i == n)
+        return;
     int j = i;
     while (j > 0 && arr[j - 1] > arr[j]) {
         int temp = arr[j - 1];
@@ -44,7 +45,8 @@ int main() {
 
     insertion_sort(arr, 0, n);
 
-    for (int i = 0; i < n; i++) cout << arr[i] << " ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
     cout << endl;
     return 0;
 }

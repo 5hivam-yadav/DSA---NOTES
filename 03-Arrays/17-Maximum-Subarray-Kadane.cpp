@@ -4,30 +4,30 @@ Platform: LeetCode
 Problem Number: -
 Difficulty: Medium
 Pattern: DP - 1D
-Statement: Given an integer array, find the contiguous subarray with the largest sum and return its sum.
-Sample Input: nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+Statement: Given an integer array, find the contiguous subarray with the largest
+sum and return its sum. Sample Input: nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
 Sample Output: 6
 Explanation: Subarray [4, -1, 2, 1] sums to 6.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
-    int maxSubArray(vector<int>& a) {
+  public:
+    int maxSubArray(vector<int> &a) {
         int b = a[0], c = a[0];
         for (size_t i = 1; i < a.size(); i++) {
             c = max(a[i], c + a[i]);

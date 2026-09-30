@@ -4,33 +4,34 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Binary Search
-Statement: Given a sorted array and x, return the first index with value > x (std::upper_bound).
-Sample Input: a = [1, 2, 2, 3, 5], x = 2
-Sample Output: 3
+Statement: Given a sorted array and x, return the first index with value > x
+(std::upper_bound). Sample Input: a = [1, 2, 2, 3, 5], x = 2 Sample Output: 3
 Explanation: Index 3 is the first value > 2.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-int upperBound(vector<int>& a, int x) {
+int upperBound(vector<int> &a, int x) {
     int lo = 0, hi = (int)a.size();
     while (lo < hi) {
         int m = lo + (hi - lo) / 2;
-        if (a[m] <= x) lo = m + 1;
-        else hi = m;
+        if (a[m] <= x)
+            lo = m + 1;
+        else
+            hi = m;
     }
     return lo;
 }

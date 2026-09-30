@@ -4,28 +4,27 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: Stack
-Statement: Given a stack, reverse it in place using recursion (pop all, insert each at the bottom).
-Sample Input: stack top->bottom = [1, 2, 3]
-Sample Output: [3, 2, 1]
-Explanation: Bottom-insertion flips the order.
+Statement: Given a stack, reverse it in place using recursion (pop all, insert
+each at the bottom). Sample Input: stack top->bottom = [1, 2, 3] Sample Output:
+[3, 2, 1] Explanation: Bottom-insertion flips the order.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-void insB(stack<int>& st, int x) {
+void insB(stack<int> &st, int x) {
     if (st.empty()) {
         st.push(x);
         return;
@@ -35,8 +34,9 @@ void insB(stack<int>& st, int x) {
     insB(st, x);
     st.push(t);
 }
-void revS(stack<int>& st) {
-    if (st.empty()) return;
+void revS(stack<int> &st) {
+    if (st.empty())
+        return;
     int x = st.top();
     st.pop();
     revS(st);
@@ -46,11 +46,16 @@ void revS(stack<int>& st) {
 int main() {
     stack<int> st;
     vector<int> vals = {3, 2, 1}; // bottom to top so top is 1
-    for (int x : vals) st.push(x);
+    for (int x : vals)
+        st.push(x);
     revS(st);
     vector<int> res;
-    while (!st.empty()) { res.push_back(st.top()); st.pop(); }
-    for (size_t i = 0; i < res.size(); i++) cout << res[i] << (i + 1 < res.size() ? " " : "");
+    while (!st.empty()) {
+        res.push_back(st.top());
+        st.pop();
+    }
+    for (size_t i = 0; i < res.size(); i++)
+        cout << res[i] << (i + 1 < res.size() ? " " : "");
     cout << endl;
     return 0;
 }

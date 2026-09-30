@@ -4,28 +4,28 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Graph (BFS/DFS)
-Statement: Given an undirected graph as an adjacency list and start node, return the BFS visit order.
-Sample Input: n = 5, edges [(0,1),(0,2),(1,3),(2,4)], start = 0
-Sample Output: [0, 1, 2, 3, 4]
-Explanation: Neighbours are visited level by level.
+Statement: Given an undirected graph as an adjacency list and start node, return
+the BFS visit order. Sample Input: n = 5, edges [(0,1),(0,2),(1,3),(2,4)], start
+= 0 Sample Output: [0, 1, 2, 3, 4] Explanation: Neighbours are visited level by
+level.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-vector<int> bfs(int n, vector<vector<int>>& g) {
+vector<int> bfs(int n, vector<vector<int>> &g) {
     vector<int> vis(n, 0), o;
     queue<int> q;
     q.push(0);
@@ -34,10 +34,11 @@ vector<int> bfs(int n, vector<vector<int>>& g) {
         int u = q.front();
         q.pop();
         o.push_back(u);
-        for (int v : g[u]) if (!vis[v]) {
-            vis[v] = 1;
-            q.push(v);
-        }
+        for (int v : g[u])
+            if (!vis[v]) {
+                vis[v] = 1;
+                q.push(v);
+            }
     }
     return o;
 }

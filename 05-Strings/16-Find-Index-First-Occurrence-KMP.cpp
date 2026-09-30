@@ -4,46 +4,52 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: String Matching
-Statement: Given haystack and needle, return the first index of needle using KMP prefix function, or -1.
-Sample Input: haystack = "sadbutsad", needle = "sad"
+Statement: Given haystack and needle, return the first index of needle using KMP
+prefix function, or -1. Sample Input: haystack = "sadbutsad", needle = "sad"
 Sample Output: 0
 Explanation: "sad" first occurs at index 0.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     int strStr(string haystack, string needle) {
         int n = (int)haystack.size(), m = (int)needle.size();
-        if (m == 0) return 0;
+        if (m == 0)
+            return 0;
         vector<int> lps(m, 0);
-        for (int i = 1, len = 0; i < m; ) {
-            if (needle[i] == needle[len]) lps[i++] = ++len;
-            else if (len) len = lps[len - 1];
-            else lps[i++] = 0;
+        for (int i = 1, len = 0; i < m;) {
+            if (needle[i] == needle[len])
+                lps[i++] = ++len;
+            else if (len)
+                len = lps[len - 1];
+            else
+                lps[i++] = 0;
         }
-        for (int i = 0, j = 0; i < n; ) {
+        for (int i = 0, j = 0; i < n;) {
             if (haystack[i] == needle[j]) {
                 i++;
                 j++;
-                if (j == m) return i - j;
-            }
-            else if (j) j = lps[j - 1];
-            else i++;
+                if (j == m)
+                    return i - j;
+            } else if (j)
+                j = lps[j - 1];
+            else
+                i++;
         }
         return -1;
     }

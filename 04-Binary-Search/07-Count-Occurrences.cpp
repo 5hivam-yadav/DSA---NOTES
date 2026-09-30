@@ -4,31 +4,31 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Binary Search
-Statement: Given a sorted array and x, return how many times x occurs (upper_bound - lower_bound).
-Sample Input: a = [5, 7, 7, 8, 8, 10], x = 8
-Sample Output: 2
-Explanation: 8 spans indices 3 to 4, so count is 2.
+Statement: Given a sorted array and x, return how many times x occurs
+(upper_bound - lower_bound). Sample Input: a = [5, 7, 7, 8, 8, 10], x = 8 Sample
+Output: 2 Explanation: 8 spans indices 3 to 4, so count is 2.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-int countOcc(vector<int>& a, int x) {
+int countOcc(vector<int> &a, int x) {
     auto l = lower_bound(a.begin(), a.end(), x);
     auto r = upper_bound(a.begin(), a.end(), x);
-    if (l == a.end() || *l != x) return 0;
+    if (l == a.end() || *l != x)
+        return 0;
     return (int)(r - l);
 }
 

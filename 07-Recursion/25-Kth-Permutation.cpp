@@ -4,34 +4,35 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: Backtracking
-Statement: Given n and k, return the k-th permutation of 1..n using factorials to pick each digit.
-Sample Input: n = 3, k = 3
-Sample Output: "213"
-Explanation: Ordered permutations: 123, 132, 213.
+Statement: Given n and k, return the k-th permutation of 1..n using factorials
+to pick each digit. Sample Input: n = 3, k = 3 Sample Output: "213" Explanation:
+Ordered permutations: 123, 132, 213.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     string getPermutation(int n, int k) {
         vector<int> a;
-        for (int i = 1; i <= n; i++) a.push_back(i);
+        for (int i = 1; i <= n; i++)
+            a.push_back(i);
         vector<int> fact(n + 1, 1);
-        for (int i = 1; i <= n; i++) fact[i] = fact[i - 1] * i;
+        for (int i = 1; i <= n; i++)
+            fact[i] = fact[i - 1] * i;
         k--;
         string r;
         for (int i = n; i >= 1; i--) {

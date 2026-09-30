@@ -4,37 +4,39 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Medium
 Pattern: Recursion
-Statement: Given n, return all well-formed parentheses strings of n pairs via backtracking.
-Sample Input: n = 3
-Sample Output: ["((()))","(()())","(())()","()(())","()()()"]
-Explanation: Catalan(3) = 5 valid strings.
+Statement: Given n, return all well-formed parentheses strings of n pairs via
+backtracking. Sample Input: n = 3 Sample Output:
+["((()))","(()())","(())()","()(())","()()()"] Explanation: Catalan(3) = 5 valid
+strings.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     vector<string> ans;
     void f(int o, int c, string cur) {
         if (o == 0 && c == 0) {
             ans.push_back(cur);
             return;
         }
-        if (o > 0) f(o - 1, c, cur + '(');
-        if (c > o) f(o, c - 1, cur + ')');
+        if (o > 0)
+            f(o - 1, c, cur + '(');
+        if (c > o)
+            f(o, c - 1, cur + ')');
     }
     vector<string> generateParenthesis(int n) {
         f(n, n, "");
@@ -47,7 +49,8 @@ int main() {
 
     Solution sol;
     auto ans = sol.generateParenthesis(n);
-    for (int i = 0; i < (int)ans.size(); i++) cout << ans[i] << " ";
+    for (int i = 0; i < (int)ans.size(); i++)
+        cout << ans[i] << " ";
     cout << endl;
     return 0;
 }

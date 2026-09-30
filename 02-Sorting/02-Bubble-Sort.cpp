@@ -4,29 +4,29 @@ Platform: GFG / Striver A2Z
 Problem Number: -
 Difficulty: Easy
 Pattern: Sorting
-Statement: Sort the array in non-decreasing order in place using bubble sort: repeatedly swap adjacent out-of-order pairs.
-Sample Input: arr = [5, 1, 4, 2, 8]
+Statement: Sort the array in non-decreasing order in place using bubble sort:
+repeatedly swap adjacent out-of-order pairs. Sample Input: arr = [5, 1, 4, 2, 8]
 Sample Output: [1,2,4,5,8]
 Explanation: Large elements bubble to the end each pass.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 // Striver A2Z: Bubble Sort
-void bubble_sort(vector<int>& arr, int n) {
+void bubble_sort(vector<int> &arr, int n) {
     for (int i = n - 1; i >= 0; i--) {
         int didSwap = 0;
         for (int j = 0; j <= i - 1; j++) {
@@ -35,7 +35,8 @@ void bubble_sort(vector<int>& arr, int n) {
                 didSwap = 1;
             }
         }
-        if (didSwap == 0) break;
+        if (didSwap == 0)
+            break;
     }
 }
 
@@ -45,7 +46,8 @@ int main() {
 
     bubble_sort(arr, n);
 
-    for (int i = 0; i < n; i++) cout << arr[i] << " ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
     cout << endl;
     return 0;
 }

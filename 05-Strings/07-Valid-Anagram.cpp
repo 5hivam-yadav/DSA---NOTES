@@ -4,34 +4,37 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Hashing
-Statement: Given strings s and t, return true if t is an anagram of s (same character counts).
-Sample Input: s = "anagram", t = "nagaram"
-Sample Output: true
-Explanation: Both use the same letters with the same counts.
+Statement: Given strings s and t, return true if t is an anagram of s (same
+character counts). Sample Input: s = "anagram", t = "nagaram" Sample Output:
+true Explanation: Both use the same letters with the same counts.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 class Solution {
-public:
+  public:
     bool isAnagram(string s, string t) {
-        if (s.size() != t.size()) return false;
+        if (s.size() != t.size())
+            return false;
         int c[26] = {0};
-        for (char x : s) c[x - 'a']++;
-        for (char x : t) if (--c[x - 'a'] < 0) return false;
+        for (char x : s)
+            c[x - 'a']++;
+        for (char x : t)
+            if (--c[x - 'a'] < 0)
+                return false;
         return true;
     }
 };

@@ -4,31 +4,28 @@ Platform: LeetCode / GFG
 Problem Number: -
 Difficulty: Easy
 Pattern: Basics
-Statement: Add two integers by value and swap two integers by reference to show value vs reference semantics.
-Sample Input: a = 3, b = 5
-Sample Output: add = 8, swapped = (5, 3)
-Explanation: 3 + 5 = 8; references let the swap persist.
+Statement: Add two integers by value and swap two integers by reference to show
+value vs reference semantics. Sample Input: a = 3, b = 5 Sample Output: add = 8,
+swapped = (5, 3) Explanation: 3 + 5 = 8; references let the swap persist.
 */
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <map>
-#include <unordered_map>
-#include <set>
-#include <unordered_set>
-#include <queue>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <cmath>
 #include <climits>
+#include <cmath>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
-int add(int a, int b) {
-    return a + b;
-}
-void doSwap(int& a, int& b) {
+int add(int a, int b) { return a + b; }
+void doSwap(int &a, int &b) {
     int t = a;
     a = b;
     b = t;
